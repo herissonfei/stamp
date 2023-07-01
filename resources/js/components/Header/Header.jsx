@@ -1,7 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import { Link } from "react-router-dom";
 import "./Header.css";
 import "/resources/css/app.css";
+import { NavLink } from "react-router-dom";
 
 export default function Header() {
     return (
@@ -36,10 +38,10 @@ export default function Header() {
                     {/* <!-- Connexion/Inscription --> */}
                     <ul className="wrapper--header menu__sous-menu menu__sous-menu--header">
                         <li className="menu__item">
-                            <a href="#">Se connecter</a>
+                            <a href="login">Se connecter</a>
                         </li>
                         <li className="menu__item">
-                            <a href="#">Devenir membre</a>
+                            <a href="register">Devenir membre</a>
                         </li>
                     </ul>
                 </div>
