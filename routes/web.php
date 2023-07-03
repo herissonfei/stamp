@@ -1,8 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\BouteilleController ;
-use App\Http\Controllers\CellierController ;
+// use App\Http\Controllers\RegisterController ;
+use App\Http\Controllers\UserController ;
+use App\Http\Controllers\CustomAuthController ;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -36,9 +38,32 @@ Route::get('/login', function () {
     return view('login');
 });
 
-Route::get('/register', function () {
-    return view('register');
-});
+// Route::get('/register', function () {
+//     return view('register');
+// });
 
+// // 用户注册
+// Route::post('/register' , [RegisterController::class, 'store']);
+
+// ---------------------------
+// Route::get('/login', [CustomAuthController::class, 'index'])->name('login');
+// Route::post('/login', [CustomAuthController::class, 'authentication'])->name(
+// 'login.authentication');
+// Route::get('/registration', [CustomAuthController::class, 'create'])->name(
+// 'user.registration');
+// Route::post('/registration-store', [CustomAuthController::class, 'store'])->name(
+// 'user.store');
+// Route::post('/login', [CustomAuthController::class, 'authentication']);
+// Route::get('/dashboard', [CustomAuthController::class, 'dashboard']);
+    
+
+
+
+
+// ---------------------------test----------------------------------------------------
+// Route::get('/registerss' , [UserController::class, 'index']);
+// Route::get('/test' , [UserController::class, 'index']);
+// Route::get('/registerss' , [RegisterController::class, 'store']);
+// Route::post('/registerss' , [RegisterController::class, 'store']);
 
 

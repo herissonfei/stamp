@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom/client";
+
+import axios from "axios";
+
 import "./Register.css";
 
 export default function Register() {
@@ -27,7 +30,18 @@ export default function Register() {
     const handleSubmit = (e) => {
         e.preventDefault();
         // 在这里执行注册逻辑，例如向后端发送注册请求
-        console.log("注册信息：", username, password, email, userProfileID);
+        const userData = {
+            username,
+            password,
+            email,
+            userProfileID,
+        };
+
+        axios.post("/register", userData).then((res) => {
+            window.location.pathname = '/login'
+        });
+        // console.log(userData);
+        // console.log("注册信息：", username, password, email, userProfileID);
         // 清空表单字段
         setUsername("");
         setPassword("");
@@ -37,7 +51,7 @@ export default function Register() {
     return (
         <div className="register-container">
             <h2>用户注册</h2>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} method="post">
                 <div className="form-group">
                     <label>用户名:</label>
                     <input

@@ -1,11 +1,17 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom/client";
-import { Link } from "react-router-dom";
+
 import "./Header.css";
 import "/resources/css/app.css";
-import { NavLink } from "react-router-dom";
 
 export default function Header() {
+    const [admin, setadmin] = useState('');
+
+    // useEffect(() => {
+    //     axios.get("/dashboard").then((res) => {
+    //         console.log(res.data);
+    //     });
+    // }, []);
     return (
         <div>
             <header className="header header--bg">
