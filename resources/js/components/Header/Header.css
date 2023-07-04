@@ -17,6 +17,7 @@
 
 .header--bg {
     background-color: var(--color-secondary);
+    color: #fff;
 }
 
 /* 中间 */
