@@ -12,76 +12,75 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
-    <link rel="stylesheet" href="../../css/app.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;600;700&family=Monserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ asset('css/entete.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/login.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+
     <!-- Scripts -->
     @viteReactRefresh
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
 <body>
-    <div id="app">
-        <!-- 这里是原先的header -->
-        <!-- <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+    <div id="app" class="page-container">
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    
-                    <ul class="navbar-nav me-auto">
+        <nav class="navbarEntete">
 
-                    </ul>
+            <div class="nav-menu">
+                <a href="/home" ><img src="{{ asset('img/vino.png') }}" alt="logo" class="logo"></a>
 
-                  
-                    <ul class="navbar-nav ms-auto">
-                      
-                        @guest
-                            @if (Route::has('login'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                                </li>
-                            @endif
+                <!-- <div class="hamburger-menu">
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                </div> -->
 
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
-                        @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                        @endguest
-                    </ul>
-                </div>
             </div>
-        </nav> -->
 
-        <!-- 内容写在这边 -->
-        <main>
+
+
+            <ul class="nav-links">
+            @guest
+                @if (Route::has('login'))
+                    <li class="navEntete-item">
+                        <a class="navEntete-link" href="{{ route('login') }}">Se connecter</a>
+                    </li>
+                @endif
+
+                @if (Route::has('register'))
+                    <li class="navEntete-item">
+                        <a class="navEntete-link" href="{{ route('register') }}">Crée un compte</a>
+                    </li>
+                @endif
+            @else
+                <li class="navEntete-item">
+                    <a class="navEntete-link" href="#" role="button" href="#}}">
+                        Bonjour, {{ Auth::user()->name }}
+                    </a>
+                </li>
+
+                <li class="navEntete-item">
+                    <a class="" href="{{ route('logout') }}">Se déconnecter</a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
+                </li>
+            @endguest
+            </ul>
+        </nav>
+
+        <main class="wrapper-contenu">
             @yield('content')
         </main>
+<!-- 
+        <footer>
+            <div class="footer-container">
+                <p>&copy; 2023 VINO. Tous les droits sont réservés.</p>
+            </div>
+        </footer> -->
     </div>
+    <script src="{{ asset('script/main.js') }}"></script>
+
 </body>
 </html>

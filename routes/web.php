@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-// use App\Http\Controllers\RegisterController ;
-use App\Http\Controllers\UserController ;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\HomeController ;
 use App\Http\Controllers\CustomAuthController ;
 
 /*
@@ -15,7 +15,7 @@ use App\Http\Controllers\CustomAuthController ;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Auth::routes();
 // =================================================================================================
 Route::get('/', function () {
     return view('home');
@@ -33,37 +33,16 @@ Route::get('/enchere', function () {
     return view('enchere');
 });
 
+Route::get('/logout', [HomeController::class, 'logout'])->name('logout');
 
-Route::get('/login', function () {
-    return view('login');
-});
 
-// Route::get('/register', function () {
-//     return view('register');
-// });
 
-// // 用户注册
-// Route::post('/register' , [RegisterController::class, 'store']);
 
-// ---------------------------
-// Route::get('/login', [CustomAuthController::class, 'index'])->name('login');
-// Route::post('/login', [CustomAuthController::class, 'authentication'])->name(
-// 'login.authentication');
-// Route::get('/registration', [CustomAuthController::class, 'create'])->name(
-// 'user.registration');
-// Route::post('/registration-store', [CustomAuthController::class, 'store'])->name(
-// 'user.store');
-// Route::post('/login', [CustomAuthController::class, 'authentication']);
-// Route::get('/dashboard', [CustomAuthController::class, 'dashboard']);
     
 
 
 
 
-// ---------------------------test----------------------------------------------------
-// Route::get('/registerss' , [UserController::class, 'index']);
-// Route::get('/test' , [UserController::class, 'index']);
-// Route::get('/registerss' , [RegisterController::class, 'store']);
-// Route::post('/registerss' , [RegisterController::class, 'store']);
+
 
 

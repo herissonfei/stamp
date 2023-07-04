@@ -23,5 +23,4 @@ import "./components/Home/Home";
 import "./components/Catalogue/Catalogue";
 import "./components/Enchere/Enchere";
 
-import "./components/Login/Login";
-import "./components/Register/Register";
+

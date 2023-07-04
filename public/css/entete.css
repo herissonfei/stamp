@@ -1,0 +1,150 @@
+html, body {
+	background-color: #f2f2f2;
+	font-family: Arial, sans-serif;
+  height: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+/* main { */
+  /* adjust the value to match the height of your header and footer combined */
+	/* min-height: calc(100% - 60px);  */
+  /* padding: 50px 0 100px 0; */
+/* } */
+
+
+.logo{
+    width:100px;
+}
+
+.wrapper{
+    padding: 0 20px 0 20px;
+}
+
+
+@media only screen and (min-width: 768px) {
+  .wrapper {
+      padding: 0 30px;
+  }
+
+  
+}
+
+@media only screen and (min-width: 1200px) {
+  .wrapper {
+      padding: 0 6vw;
+  }
+
+  
+}
+.my{
+  margin: 30px 0 30px 0;
+}
+
+.navbarEntete {
+  background-color: #2C3333;
+  color: #fff;
+}
+
+.nav-menu{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 25px 20px;
+}
+
+.hamburger-menu {
+  width: 30px;
+  height: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.bar {
+  width: 100%;
+  height: 3px;
+  background-color: #fff;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+.hamburger-menu.open .bar:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger-menu.open .bar:nth-child(1) {
+  transform: rotate(-45deg) translate(-11px, 4px);
+}
+
+.hamburger-menu.open .bar:nth-child(3) {
+  transform: rotate(45deg) translate(-11px, -4px);
+}
+
+.nav-links {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: -110%;
+  width: 100%;
+  height: calc(100vh - 80px);
+  background-color: #2C3333;
+  z-index: 1;
+  transition: all 0.3s ease;
+}
+
+.nav-links li {
+  margin: 15px 0;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.show-nav {
+  /* right: 0; */
+  top:100px;
+}
+
+
+@media screen and (min-width: 576px) {
+
+  .navbarEntete {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: center;
+  }
+
+
+  .navbarEntete .hamburger-menu {
+    display: none;
+    
+  }
+
+  .navbarEntete .nav-links {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    position: relative;
+    top: 0;
+    right: 0;
+    height: 20px;
+    padding: 0;
+    margin-top: 34px;
+    margin-bottom: 0;
+  }
+
+  .nav-links li {
+    padding: 15px;
+    list-style: none;
+  }
+  
+}
