@@ -57,6 +57,9 @@
                             <a class="navEntete-link" href="#" role="button" href="#}}">
                                 Bonjour, {{ Auth::user()->name }}
                             </a>
+                            <a class="navEntete-link" href="#" role="button" href="#}}">
+                                publier une enchère
+                            </a>
                         </li>
 
                         <li class="menu__item">
@@ -67,6 +70,7 @@
                         </li>
                     @endguest
                 </ul>
+                
             </div>
 
 

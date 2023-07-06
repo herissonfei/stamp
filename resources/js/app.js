@@ -15,12 +15,13 @@ import "./bootstrap";
 
 
 // 从这里开始
-import "./components/Header/Header";
+
 import "./components/Footer/Footer";
 import "./components/Nav/Nav"
 
 import "./components/Home/Home";
 import "./components/Catalogue/Catalogue";
+import "./components/Bid/Bid";
 import "./components/Enchere/Enchere";
 
 

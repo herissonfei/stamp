@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\HomeController ;
-use App\Http\Controllers\CustomAuthController ;
+use App\Http\Controllers\BidController ;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,6 +34,9 @@ Route::get('/enchere', function () {
 });
 
 Route::get('/logout', [HomeController::class, 'logout'])->name('logout');
+
+Route::get('/test', [BidController::class, 'test']);
+
 
 
 
