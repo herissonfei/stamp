@@ -18,10 +18,8 @@ import "./bootstrap";
 
 import "./components/Footer/Footer";
 import "./components/Nav/Nav"
-
 import "./components/Home/Home";
 import "./components/Catalogue/Catalogue";
-import "./components/Bid/Bid";
 import "./components/Enchere/Enchere";
 
 

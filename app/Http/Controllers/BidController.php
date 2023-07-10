@@ -9,20 +9,34 @@ use Illuminate\Http\Request;
 
 class BidController extends Controller
 {
-    public function test()
+    // 获取所有的Bids
+    public function getAllBids()
     {
-        //bids,  stamps
+        //bids,  stamps, image的数据
 
-        $test = Bid::select('bids.id', 'bids.bidStampId','bids.bidderId','bids.bidTime','bids.startDate','bids.endDate','bids.favorites','stamps.name','stamps.startingPrice','stamps.reservePrice','stamps.sellerId','stamps.categoryId','stamps.auctionCount','stamps.creationDate','stamps.dimensions','stamps.country','stamps.conditions','stamps.status','stamps.certified','stamps.description','stamps.type', 'stampimages.imageURL')
+        $bids = Bid::select('bids.id', 'bids.bidStampId','bids.bidderId','bids.bidTime','bids.auctionCount','bids.startDate','bids.endDate','bids.favorites','stamps.name','stamps.startingPrice','stamps.reservePrice','stamps.sellerId','stamps.categoryId','stamps.creationDate','stamps.dimensions','stamps.country','stamps.conditions','stamps.status','stamps.certified','stamps.description','stamps.type', 'stampimages.imageURL')
         ->join('stamps', 'stamps.id', '=', 'bids.bidStampId')
         ->join('stampimages', 'stamps.id', '=', 'stampimages.stampId')
         ->get();
-        
-       
-
-        return response()->json($test);
-
+    
+        return response()->json($bids);
     }
+
+    public function getOneBid($id)
+    {
+        //bids,  stamps
+
+        $bid = Bid::select('bids.id', 'bids.bidStampId','bids.bidderId','bids.bidTime','bids.auctionCount','bids.startDate','bids.endDate','bids.favorites','stamps.name','stamps.startingPrice','stamps.reservePrice','stamps.sellerId','stamps.categoryId','stamps.creationDate','stamps.dimensions','stamps.country','stamps.conditions','stamps.status','stamps.certified','stamps.description','stamps.type', 'stampimages.imageURL')
+        ->join('stamps', 'stamps.id', '=', 'bids.bidStampId')
+        ->join('stampimages', 'stamps.id', '=', 'stampimages.stampId')
+        ->where('bids.id', '=', $id)
+        ->get();
+       
+        return response()->json($bid);
+    }
+
+
+
     /**
      * Display a listing of the resource.
      *

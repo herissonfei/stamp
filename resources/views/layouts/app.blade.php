@@ -28,12 +28,12 @@
         <header class="header header--bg">
 
             <div class="wrapper--header">
-                <a href="/home" ><img src="img/png/logo.png" alt="logo" class="header__logo"></a>
+                <a href="/home" ><img src="/img/png/logo.png" alt="logo" class="header__logo"></a>
                 @if(request()->route()->getName() !== 'login' && request()->route()->getName() !== 'register')
                 <div class="input-bar">
 					<div class="input-bar__text">
 						<p>Avancée</p>
-						<img class="icone-dropdown-arrow icone-dropdown-arrow--input-bar" src="img/png/icone-dropdown-arrow-blue.png" alt="fleche dropwdown"/>
+						<img class="icone-dropdown-arrow icone-dropdown-arrow--input-bar" src="/img/png/icone-dropdown-arrow-blue.png" alt="fleche dropwdown"/>
 					</div>
 					<input class="input-bar__input" type="text" id="input-bar" name="input-bar" placeholder="Trouvez une enchère"/>
 				</div>

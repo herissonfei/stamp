@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-    <!-- <div id="header"></div> -->
     <div id="nav"></div>
     <div id="enchere"></div>
     <div id="footer"></div>

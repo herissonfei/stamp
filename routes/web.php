@@ -29,15 +29,19 @@ Route::get('/catalogue', function () {
     return view('catalogue');
 });
 
-Route::get('/enchere', function () {
-    return view('enchere');
-});
+
 
 Route::get('/logout', [HomeController::class, 'logout'])->name('logout');
 
-Route::get('/test', [BidController::class, 'test']);
+// ----------------------------------------------------------------------------------------Bids
+// 获取所有的竞拍Bid
+Route::get('/getAllBids', [BidController::class, 'getAllBids']);
+// 获取一个的竞拍Bid
+Route::get('enchere/{id}', function ($id) {
+    return view('enchere');
+});
 
-
+Route::get('/getOneBid/{id}', [BidController::class, 'getOneBid']);
 
 
 

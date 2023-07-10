@@ -5,7 +5,7 @@ import "./Footer.css";
 export default function Footer() {
     return (
         <footer className="footer">
-            <img width="150" src="img/png/logo.png" alt="logo Stampee" />
+            <img width="150" src="/img/png/logo.png" alt="logo Stampee" />
             <div className="wrapper grid grid--3-var-footer footer--border-white">
                 <section>
                     <h2>Accès rapides</h2>

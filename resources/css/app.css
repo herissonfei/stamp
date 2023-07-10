@@ -575,7 +575,7 @@ small {
             rgba(0, 0, 0, 0.6) 100%,
             rgba(0, 0, 0, 0) 10%
         ),
-        url(img/jpg/categories/categorie-1.jpg);
+        url(/img/jpg/categories/categorie-1.jpg);
 }
 
 .tile__img-container--second {
@@ -583,7 +583,7 @@ small {
             rgba(0, 0, 0, 0.6) 100%,
             rgba(0, 0, 0, 0) 10%
         ),
-        url(img/jpg/categories/categorie-2.jpg);
+        url(/img/jpg/categories/categorie-2.jpg);
 }
 
 .tile__img-container--third {
@@ -591,7 +591,7 @@ small {
             rgba(0, 0, 0, 0.6) 100%,
             rgba(0, 0, 0, 0) 10%
         ),
-        url(img/jpg/categories/categorie-3.jpg);
+        url(/img/jpg/categories/categorie-3.jpg);
 }
 
 @media only screen and (min-width: 768px) {
@@ -622,7 +622,7 @@ select {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    background-image: url(img/png/icone-dropdown-arrow-blue.png);
+    background-image: url(/img/png/icone-dropdown-arrow-blue.png);
     background-position: 125px;
     background-repeat: no-repeat;
     background-size: 12px;
@@ -835,7 +835,7 @@ input[type="checkbox"]:checked {
             rgba(0, 0, 0, 0.8) 100%,
             rgba(0, 0, 0, 0) 10%
         ),
-        url(img/jpg/hero-accueil.jpg);
+        url(/img/jpg/hero-accueil.jpg);
     background-color: var(--color-secondary);
     background-position: center;
     background-repeat: no-repeat;
@@ -874,7 +874,7 @@ input[type="checkbox"]:checked {
             rgba(0, 0, 0, 0.8) 100%,
             rgba(0, 0, 0, 0) 10%
         ),
-        url(img/jpg/hero-catalogue-enchere.jpg);
+        url(/img/jpg/hero-catalogue-enchere.jpg);
     padding-bottom: 150px;
     padding-top: 150px;
 }
@@ -900,7 +900,7 @@ input[type="checkbox"]:checked {
             rgba(0, 0, 0, 0.8) 100%,
             rgba(0, 0, 0, 0) 10%
         ),
-        url(img/jpg/hero-enchere.jpg);
+        url(/img/jpg/hero-enchere.jpg);
     padding-top: 50px;
     padding-bottom: 50px;
 }
