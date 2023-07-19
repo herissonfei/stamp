@@ -82,7 +82,36 @@ class BidController extends Controller
      */
     public function store(Request $request)
     { 
-        return response()->json($request);
+        // return response()->json($request);
+                // return $request->json()->all(); 
+                DB::table('stamps')->insert([
+                    'name' => $request->name,
+                    'startingPrice' => $request->startingPrice,
+                    'reservePrice' => $request->reservePrice,
+                    'creationDate' => $request->creationDate,
+                    'dimensions' => $request->dimensions,
+                    'country' => $request->country,
+                    'conditions' => $request->conditions,
+                    'status' => $request->status,
+                    'certified' => $request->certified,
+                    'description' => $request->description,
+                    'type' => $request->type
+                ]);
+                $stampId = DB::table('stamps')->latest('id')->value('id');
+                DB::table('bids')->insert([
+                    'bidStampId' => $stampId,
+                    'bidderId' => $request->bidderId,
+                    'bidTime' => $request->bidTime,
+                    'startDate' => $request->startDate,
+                    'endDate' => $request->endDate,
+                    'favorites' => $request->favorites,
+                    'auctionCount' => $request->auctionCount
+                ]);
+
+                DB::table('stampimages')->insert([
+                    'stampId' => $stampId,
+                    'imageURL' => $request->imageURL
+                ]);
    
     }
 

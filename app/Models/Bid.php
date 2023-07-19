@@ -8,4 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Bid extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'bidStampId ',
+        'bidderId ',
+        'bidTime',
+        'startDate',
+        'endDate',
+        'favorites',
+        'auctionCount'
+    ];
 }

@@ -20,12 +20,11 @@ export default function Publish() {
     const [conditions, setConditions] = useState("Excellente");
     const [status, setStatus] = useState("Available");
     const [certified, setCertified] = useState("Yes");
-    const [imageURL, setImageURL] = useState("");
     const [description, setDescription] = useState(
         "Lorem ipsum dolor sit amet, consectetur adipis minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate"
     );
     const [type, setType] = useState("Regular");
-
+    const [imageURL, setImageURL] = useState("");
     useEffect(() => {
         axios.get("/getUser").then((res) => {
             // console.log(res.data);
@@ -62,6 +61,7 @@ export default function Publish() {
             certified,
             description,
             imageURL,
+            type,
         };
         // console.log(selectedFile);
         // console.log(selectedFile.name);
@@ -312,7 +312,17 @@ export default function Publish() {
                         onChange={(event) => setCountry(event.target.value)}
                     />
                 </div>
-
+                <div className="form-group">
+                    <label className="labelForm" htmlFor="type">
+                        Type:
+                    </label>
+                    <input
+                        type="text"
+                        id="type"
+                        value={type}
+                        onChange={(event) => setCountry(event.target.value)}
+                    />
+                </div>
                 <button type="submit">上传</button>
             </form>
             {/* <form onSubmit={handleSubmit}>

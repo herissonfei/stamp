@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Stampimage extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'stampId  ',
+        'imageURL '
+    ];
 }
