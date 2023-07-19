@@ -14,7 +14,7 @@ class BidController extends Controller
     {
         //bids,  stamps, image的数据
 
-        $bids = Bid::select('bids.id', 'bids.bidStampId','bids.bidderId','bids.bidTime','bids.auctionCount','bids.startDate','bids.endDate','bids.favorites','stamps.name','stamps.startingPrice','stamps.reservePrice','stamps.sellerId','stamps.categoryId','stamps.creationDate','stamps.dimensions','stamps.country','stamps.conditions','stamps.status','stamps.certified','stamps.description','stamps.type', 'stampimages.imageURL')
+        $bids = Bid::select('bids.id', 'bids.bidStampId','bids.bidderId','bids.bidTime','bids.auctionCount','bids.startDate','bids.endDate','bids.favorites','stamps.name','stamps.startingPrice','stamps.reservePrice','stamps.creationDate','stamps.dimensions','stamps.country','stamps.conditions','stamps.status','stamps.certified','stamps.description','stamps.type', 'stampimages.imageURL')
         ->join('stamps', 'stamps.id', '=', 'bids.bidStampId')
         ->join('stampimages', 'stamps.id', '=', 'stampimages.stampId')
         ->get();
@@ -26,7 +26,7 @@ class BidController extends Controller
     {
         //bids,  stamps
 
-        $bid = Bid::select('bids.id', 'bids.bidStampId','bids.bidderId','bids.bidTime','bids.auctionCount','bids.startDate','bids.endDate','bids.favorites','stamps.name','stamps.startingPrice','stamps.reservePrice','stamps.sellerId','stamps.categoryId','stamps.creationDate','stamps.dimensions','stamps.country','stamps.conditions','stamps.status','stamps.certified','stamps.description','stamps.type', 'stampimages.imageURL')
+        $bid = Bid::select('bids.id', 'bids.bidStampId','bids.bidderId','bids.bidTime','bids.auctionCount','bids.startDate','bids.endDate','bids.favorites','stamps.name','stamps.startingPrice','stamps.reservePrice','stamps.creationDate','stamps.dimensions','stamps.country','stamps.conditions','stamps.status','stamps.certified','stamps.description','stamps.type', 'stampimages.imageURL')
         ->join('stamps', 'stamps.id', '=', 'bids.bidStampId')
         ->join('stampimages', 'stamps.id', '=', 'stampimages.stampId')
         ->where('bids.id', '=', $id)
@@ -57,6 +57,23 @@ class BidController extends Controller
         //
     }
 
+    public function uploadImage(Request $request)
+    { 
+    if ($request->hasFile('image')) {
+        $image = $request->file('image');
+        $fileName = $image->getClientOriginalName(); 
+
+        // 将上传的图片保存到 img\jpg\encheres/ 目录
+        $image->move(public_path('img\jpg\encheres'), $fileName);
+
+        // 返回成功响应
+        return response()->json(['message' => '图片上传成功', 'url' => asset('img/jpg/encheres/' . $fileName)], 200);
+    }
+
+    // 返回失败响应
+    return response()->json(['message' => '图片上传失败'], 400);
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -64,8 +81,9 @@ class BidController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        //
+    { 
+        return response()->json($request);
+   
     }
 
     /**

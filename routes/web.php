@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\HomeController ;
 use App\Http\Controllers\BidController ;
+use App\Http\Controllers\UserController ;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -29,20 +31,30 @@ Route::get('/catalogue', function () {
     return view('catalogue');
 });
 
+Route::get('/publish', function () {
+    return view('publish');
+});
 
 
 Route::get('/logout', [HomeController::class, 'logout'])->name('logout');
 
+
 // ----------------------------------------------------------------------------------------Bids
 // 获取所有的竞拍Bid
 Route::get('/getAllBids', [BidController::class, 'getAllBids']);
+
 // 获取一个的竞拍Bid
 Route::get('enchere/{id}', function ($id) {
     return view('enchere');
 });
-
+// 获取一个的竞拍Bid，stamp, image的数据 
 Route::get('/getOneBid/{id}', [BidController::class, 'getOneBid']);
 
+
+// ----------------------------------------------------------------------------发布竞拍
+Route::get('/getUser', [UserController::class, 'index']);
+Route::post('/uploadImage', [BidController::class, 'uploadImage']);
+Route::post('/uploadFormData', [BidController::class, 'store']);
 
 
     

@@ -21,5 +21,6 @@ import "./components/Nav/Nav"
 import "./components/Home/Home";
 import "./components/Catalogue/Catalogue";
 import "./components/Enchere/Enchere";
+import "./components/Publish/Publish";
 
 

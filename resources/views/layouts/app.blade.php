@@ -57,7 +57,7 @@
                             <a class="navEntete-link" href="#" role="button" href="#}}">
                                 Bonjour, {{ Auth::user()->name }}
                             </a>
-                            <a class="navEntete-link" href="#" role="button" href="#}}">
+                            <a class="navEntete-link" href="/publish" role="button" href="#}}">
                                 publier une enchère
                             </a>
                         </li>

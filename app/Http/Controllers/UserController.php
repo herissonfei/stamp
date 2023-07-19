@@ -17,18 +17,10 @@ class UserController extends Controller
     public function index()
     {
         //
-      
-        // $users = User::all();
-        // return response()->json($users);
-        return view('home');
-
-        //  User::create([
-        //     'UserName' => "test1",
-        //     'Email' => "test1",
-        //     'UserProfileID' => 1,
-        //     'Password' => 11111,
-        // ]);
-
+        if(Auth::check()) {
+            return response()->json(Auth::user());
+        }
+        return view('auth.login');
     }
 
     /**
