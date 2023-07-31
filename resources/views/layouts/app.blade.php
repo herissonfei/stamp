@@ -60,6 +60,9 @@
                             <a class="navEntete-link" href="/publish" role="button" href="#}}">
                                 publier une enchère
                             </a>
+                            <a class="navEntete-link" href="/listePrive" role="button" href="#}}">
+                                mes enchères
+                            </a>
                         </li>
 
                         <li class="menu__item">

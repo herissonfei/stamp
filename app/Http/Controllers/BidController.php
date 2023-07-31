@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Bid;
 use App\Models\Stamp;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+
 use Illuminate\Http\Request;
 
 class BidController extends Controller
@@ -36,6 +38,26 @@ class BidController extends Controller
     }
 
 
+    public function getBidsPrive()
+    {
+        //bids,  stamps
+
+        $id_user_connecte = Auth::user()->id;
+
+        // $bid = Bid::select('bids.id', 'bids.bidStampId','bids.bidderId','bids.bidTime','bids.auctionCount','bids.startDate','bids.endDate','bids.favorites','stamps.name','stamps.startingPrice','stamps.reservePrice','stamps.creationDate','stamps.dimensions','stamps.country','stamps.conditions','stamps.status','stamps.certified','stamps.description','stamps.type', 'stampimages.imageURL')
+        // ->join('stamps', 'stamps.id', '=', 'bids.bidStampId')
+        // ->join('stampimages', 'stamps.id', '=', 'stampimages.stampId')
+        // ->where('bids.id', '=', $id_user_connecte)
+        // ->get();
+        
+        $bids = Bid::select('bids.id', 'bids.bidStampId','bids.bidderId','bids.bidTime','bids.auctionCount','bids.startDate','bids.endDate','bids.favorites','stamps.name','stamps.startingPrice','stamps.reservePrice','stamps.creationDate','stamps.dimensions','stamps.country','stamps.conditions','stamps.status','stamps.certified','stamps.description','stamps.type', 'stampimages.imageURL')
+        ->join('stamps', 'stamps.id', '=', 'bids.bidStampId')
+        ->join('stampimages', 'stamps.id', '=', 'stampimages.stampId')
+        ->where('bids.bidderId', '=', $id_user_connecte)
+        ->get();
+       
+        return response()->json($bids);
+    }
 
     /**
      * Display a listing of the resource.

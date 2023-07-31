@@ -12,15 +12,12 @@ import "./bootstrap";
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-
-
 // 从这里开始
 
 import "./components/Footer/Footer";
-import "./components/Nav/Nav"
+import "./components/Nav/Nav";
 import "./components/Home/Home";
 import "./components/Catalogue/Catalogue";
 import "./components/Enchere/Enchere";
 import "./components/Publish/Publish";
-
-
+import "./components/ListePrive/ListePrive";

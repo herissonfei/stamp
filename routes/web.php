@@ -35,6 +35,11 @@ Route::get('/publish', function () {
     return view('publish');
 });
 
+// 跳转到mes enchères页面
+Route::get('/listePrive', function () {
+    return view('listePrive');
+});
+
 
 Route::get('/logout', [HomeController::class, 'logout'])->name('logout');
 
@@ -49,6 +54,10 @@ Route::get('enchere/{id}', function ($id) {
 });
 // 获取一个的竞拍Bid，stamp, image的数据 
 Route::get('/getOneBid/{id}', [BidController::class, 'getOneBid']);
+
+// 获取当前登录用户所拥有的所有拍卖bid
+Route::get('/getBidsPrive', [BidController::class, 'getBidsPrive']);
+
 
 
 // ----------------------------------------------------------------------------发布竞拍
