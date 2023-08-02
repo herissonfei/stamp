@@ -177,8 +177,12 @@ class BidController extends Controller
      * @param  \App\Models\Bid  $bid
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Bid $bid)
+    public function destroy(Bid $bid, $id)
     {
         //
+        DB::table('bids')->where('id', $id)->delete();
+        // return response()->json($id);
+
+        return true;
     }
 }

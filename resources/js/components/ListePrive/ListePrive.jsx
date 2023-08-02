@@ -12,6 +12,18 @@ export default function ListePrive() {
         });
     }, []);
 
+    const deleteBid = (bidPrive) => {
+        console.log(bidPrive);
+        axios.delete(`/deleteBid/${bidPrive.id}`).then((res) => {
+            // console.log(res.data);
+
+            axios.get("/getBidsPrive").then((res) => {
+                // console.log(res.data);
+
+                setBidsPrive(res.data);
+            });
+        });
+    };
     return (
         <div>
             <div className="hero hero--page-interieure">
@@ -610,9 +622,12 @@ export default function ListePrive() {
                                         </p>
                                         <a
                                             className="btn tile__btn"
-                                            href={`/enchere/${bidPrive.id}`}
+                                            onClick={() => {
+                                                deleteBid(bidPrive);
+                                            }}
+                                            // href={`/deleteBid/${bidPrive.id}`}
                                         >
-                                            Miser
+                                            Supprimer
                                         </a>
                                     </div>
                                 </div>

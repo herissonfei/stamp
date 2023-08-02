@@ -64,6 +64,8 @@ Route::get('/getBidsPrive', [BidController::class, 'getBidsPrive']);
 Route::get('/getUser', [UserController::class, 'index']);
 Route::post('/uploadImage', [BidController::class, 'uploadImage']);
 Route::post('/uploadFormData', [BidController::class, 'store']);
+Route::delete('/deleteBid/{id}' , [BidController::class, 'destroy']);
+
 
 
     
