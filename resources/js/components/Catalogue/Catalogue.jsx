@@ -6,12 +6,138 @@ import "./Catalogue.css";
 export default function Catalogue() {
     const [bids, setBids] = useState([]);
 
+    // checkbox CONDITION
+    const [isCheckedParfaite, setIsCheckedParfaite] = useState(false);
+    const [isCheckedExcellente, setIsCheckedExcellente] = useState(false);
+    const [isCheckedBonne, setIsCheckedBonne] = useState(false);
+    const [isCheckedMoyenne, setIsCheckedMoyenne] = useState(false);
+    const [isCheckedEndommage, setIsCheckedEndommage] = useState(false);
+
+    const handleCheckboxChangeParfaite = () => {
+        setIsCheckedParfaite(!isCheckedParfaite);
+    };
+
+    const handleCheckboxChangeExcellente = () => {
+        setIsCheckedExcellente(!isCheckedExcellente);
+    };
+
+    const handleCheckboxChangeBonne = () => {
+        setIsCheckedBonne(!isCheckedBonne);
+    };
+
+    const handleCheckboxChangeMoyenne = () => {
+        setIsCheckedMoyenne(!isCheckedMoyenne);
+    };
+
+    const handleCheckboxChangeEndommage = () => {
+        setIsCheckedEndommage(!isCheckedEndommage);
+    };
+
+    // checkbox TYPE
+    const [isCheckedGénéral, setIsCheckedGénéral] = useState(false);
+    const [isCheckedCourrierAérien, setIsCheckedCourrierAérien] =
+        useState(false);
+    const [isCheckedLivret, setIsCheckedLivret] = useState(false);
+    const [isCheckedPortdû, setIsCheckedPortdû] = useState(false);
+    const [isCheckedCartePostale, setIsCheckedCartePostale] = useState(false);
+    const [isCheckedSemiPostal, setIsCheckedSemiPostal] = useState(false);
+    const [isCheckedEntierPostal, setIsCheckedEntierPostal] = useState(false);
+
+    const handleCheckboxChangeGénéral = () => {
+        setIsCheckedGénéral(!isCheckedGénéral);
+    };
+
+    const handleCheckboxChangeCourrierAérien = () => {
+        setIsCheckedCourrierAérien(!isCheckedCourrierAérien);
+    };
+
+    const handleCheckboxChangeLivret = () => {
+        setIsCheckedLivret(!isCheckedLivret);
+    };
+
+    const handleCheckboxChangePortdû = () => {
+        setIsCheckedPortdû(!isCheckedPortdû);
+    };
+
+    const handleCheckboxChangeCartePostale = () => {
+        setIsCheckedCartePostale(!isCheckedCartePostale);
+    };
+
+    const handleCheckboxChangeSemiPostal = () => {
+        setIsCheckedSemiPostal(!isCheckedSemiPostal);
+    };
+
+    const handleCheckboxChangeEntierPostal = () => {
+        setIsCheckedEntierPostal(!isCheckedEntierPostal);
+    };
+
     useEffect(() => {
         axios.get("/getAllBids").then((res) => {
-            console.log(res.data);
+            // console.log(res.data);
             setBids(res.data);
         });
     }, []);
+
+    const [selectedOption, setSelectedOption] = useState("");
+
+    const handleSelectChange = (event) => {
+        setSelectedOption(event.target.value);
+    };
+
+    const handleParDefault = (event) => {
+        event.preventDefault();
+        console.log("par default");
+        // 在这里可以使用 selectedOption 的值进行进一步处理
+        // select
+        // console.log("选中的选项是：", selectedOption);
+
+        // checkbox CONDITION
+        // console.log("Checkbox Parfaite 选中状态：", isCheckedParfaite);
+        // console.log("Checkbox Excellente 选中状态：", isCheckedExcellente);
+        // console.log("Checkbox isCheckedBonne 选中状态：", isCheckedBonne);
+        // console.log("Checkbox isCheckedMoyenne 选中状态：", isCheckedMoyenne);
+        // console.log(
+        //     "Checkbox isCheckedEndommage 选中状态：",
+        //     isCheckedEndommage
+        // );
+
+        // checkbox TYPE
+        // console.log(isCheckedGénéral);
+        // console.log(isCheckedCourrierAérien);
+        // console.log(isCheckedLivret);
+        // console.log(isCheckedPortdû);
+        // console.log(isCheckedCartePostale);
+        // console.log(isCheckedSemiPostal);
+        // console.log(isCheckedEntierPostal);
+    };
+
+    const handleChercher = (event) => {
+        event.preventDefault();
+        console.log("chercher");
+        // 在这里可以使用 selectedOption 的值进行进一步处理
+        // select
+        // console.log("选中的选项是：", selectedOption);
+
+        // checkbox CONDITION
+        // console.log("Checkbox Parfaite 选中状态：", isCheckedParfaite);
+        // console.log("Checkbox Excellente 选中状态：", isCheckedExcellente);
+        // console.log("Checkbox isCheckedBonne 选中状态：", isCheckedBonne);
+        // console.log("Checkbox isCheckedMoyenne 选中状态：", isCheckedMoyenne);
+        // console.log(
+        //     "Checkbox isCheckedEndommage 选中状态：",
+        //     isCheckedEndommage
+        // );
+
+        // checkbox TYPE
+        // console.log(isCheckedGénéral);
+        // console.log(isCheckedCourrierAérien);
+        // console.log(isCheckedLivret);
+        // console.log(isCheckedPortdû);
+        // console.log(isCheckedCartePostale);
+        // console.log(isCheckedSemiPostal);
+        // console.log(isCheckedEntierPostal);
+    };
+
     return (
         <div>
             {/* <!-- HERO --> */}
@@ -142,57 +268,60 @@ export default function Catalogue() {
                     {/* <!-- RECHERCHE AVANCÉE --> */}
                     <div className="search-bar search-bar--desktop">
                         <h2>Recherche Avancée</h2>
+                        {/* <form onSubmit={handleSubmit} method="GET"> */}
                         <form method="GET">
                             <section>
                                 <h3>Condition</h3>
                                 <div>
                                     <input
                                         type="checkbox"
-                                        id="parfaite"
-                                        value="parfaite"
-                                        name="parfaite"
+                                        checked={isCheckedParfaite}
+                                        onChange={handleCheckboxChangeParfaite}
                                     />
                                     <label>Parfaite</label>
                                 </div>
                                 <div>
                                     <input
                                         type="checkbox"
-                                        id="excellente"
-                                        value="excellente"
-                                        name="excellente"
+                                        checked={isCheckedExcellente}
+                                        onChange={
+                                            handleCheckboxChangeExcellente
+                                        }
                                     />
                                     <label>Excellente</label>
                                 </div>
                                 <div>
                                     <input
                                         type="checkbox"
-                                        id="bonne"
-                                        value="bonne"
+                                        checked={isCheckedBonne}
+                                        onChange={handleCheckboxChangeBonne}
                                     />
                                     <label>Bonne</label>
                                 </div>
                                 <div>
                                     <input
                                         type="checkbox"
-                                        id="moyenne"
-                                        value="moyenne"
-                                        name="moyenne"
+                                        checked={isCheckedMoyenne}
+                                        onChange={handleCheckboxChangeMoyenne}
                                     />
                                     <label>Moyenne</label>
                                 </div>
                                 <div>
                                     <input
                                         type="checkbox"
-                                        id="endommage"
-                                        value="endommage"
-                                        name="endommage"
+                                        checked={isCheckedEndommage}
+                                        onChange={handleCheckboxChangeEndommage}
                                     />
                                     <label>Endommagé</label>
                                 </div>
                             </section>
                             <section>
                                 <h3>Pays d'origine</h3>
-                                <select aria-label="select-country">
+                                <select
+                                    aria-label="select-country"
+                                    value={selectedOption}
+                                    onChange={handleSelectChange}
+                                >
                                     <option defaultValue value="tous">
                                         Tous les pays
                                     </option>
@@ -215,7 +344,6 @@ export default function Catalogue() {
                                     <div className="wrapper--header">
                                         <input
                                             type="number"
-                                            name="prix"
                                             placeholder="00.00"
                                         />
                                         <span>$&nbsp;-</span>
@@ -223,7 +351,6 @@ export default function Catalogue() {
                                     <div className="wrapper--header">
                                         <input
                                             type="number"
-                                            name="prix"
                                             aria-label="input-price"
                                         />
                                         <span>$</span>
@@ -236,61 +363,64 @@ export default function Catalogue() {
                                     {/* 这一块的name可能需要删除 */}
                                     <input
                                         type="checkbox"
-                                        id="general"
-                                        value="general"
-                                        name="general"
+                                        checked={isCheckedGénéral}
+                                        onChange={handleCheckboxChangeGénéral}
                                     />
                                     <label>Général</label>
                                 </div>
                                 <div>
                                     <input
                                         type="checkbox"
-                                        id="aerien"
-                                        value="aerien"
-                                        name="aerien"
+                                        checked={isCheckedCourrierAérien}
+                                        onChange={
+                                            handleCheckboxChangeCourrierAérien
+                                        }
                                     />
                                     <label>Courrier Aérien</label>
                                 </div>
                                 <div>
                                     <input
                                         type="checkbox"
-                                        id="livret"
-                                        value="livret"
+                                        checked={isCheckedLivret}
+                                        onChange={handleCheckboxChangeLivret}
                                     />
                                     <label>Livret</label>
                                 </div>
                                 <div>
                                     <input
                                         type="checkbox"
-                                        id="port-du"
-                                        value="port-du"
-                                        name="port-du"
+                                        checked={isCheckedPortdû}
+                                        onChange={handleCheckboxChangePortdû}
                                     />
                                     <label>Port dû</label>
                                 </div>
                                 <div>
                                     <input
                                         type="checkbox"
-                                        id="carte-postale"
-                                        value="carte-postale"
+                                        checked={isCheckedCartePostale}
+                                        onChange={
+                                            handleCheckboxChangeCartePostale
+                                        }
                                     />
                                     <label>Carte postale</label>
                                 </div>
                                 <div>
                                     <input
                                         type="checkbox"
-                                        id="semi-postal"
-                                        value="semi-postal"
-                                        name="semi-postal"
+                                        checked={isCheckedSemiPostal}
+                                        onChange={
+                                            handleCheckboxChangeSemiPostal
+                                        }
                                     />
                                     <label>Semi postal</label>
                                 </div>
                                 <div>
                                     <input
                                         type="checkbox"
-                                        id="entier-postal"
-                                        value="entier-postal"
-                                        name="entier-postal"
+                                        checked={isCheckedEntierPostal}
+                                        onChange={
+                                            handleCheckboxChangeEntierPostal
+                                        }
                                     />
                                     <label>Entier postal</label>
                                 </div>
@@ -301,14 +431,12 @@ export default function Catalogue() {
                                     <div className="wrapper--header">
                                         <input
                                             type="number"
-                                            name="annee"
                                             aria-label="input-year-min"
                                         />
                                         <span>-</span>
                                     </div>
                                     <input
                                         type="number"
-                                        name="annee"
                                         aria-label="input-year-max"
                                     />
                                 </div>
@@ -319,7 +447,6 @@ export default function Catalogue() {
                                     <div className="wrapper--header">
                                         <input
                                             type="number"
-                                            name="dimension"
                                             placeholder="00.00"
                                             aria-label="input-dimension-height"
                                         />
@@ -327,30 +454,54 @@ export default function Catalogue() {
                                     </div>
                                     <input
                                         type="number"
-                                        name="dimension"
                                         aria-label="input-dimension-width"
                                     />
                                 </div>
                             </section>
                             <div className="wrapper--header">
                                 <div>
-                                    <a className="btn btn--text-icone">
+                                    {/* <a className="btn btn--text-icone">
                                         Par défaut
                                         <img
                                             width="15"
                                             src="img/png/icone-round-arrow-orange.png"
                                             alt="icone fleche par defaut"
                                         />
-                                    </a>
-                                    <a className="btn btn--text-icone" href="#">
+                                    </a> */}
+                                    {/* <a className="btn btn--text-icone">
                                         Chercher
-                                    </a>
+                                    </a> */}
+                                    <button
+                                        type="submit"
+                                        onClick={handleParDefault}
+                                    >
+                                        <a className="btn btn--text-icone">
+                                            Par défaut
+                                            <img
+                                                width="15"
+                                                src="img/png/icone-round-arrow-orange.png"
+                                                alt="icone fleche par defaut"
+                                            />
+                                        </a>
+                                    </button>
+                                    <button
+                                        type="submit"
+                                        onClick={handleChercher}
+                                    >
+                                        <a
+                                            className="btn btn--text-icone"
+                                            // href="#"
+                                        >
+                                            Chercher
+                                        </a>
+                                    </button>
                                 </div>
                             </div>
                         </form>
                     </div>
 
                     {/* <!-- ASIDE MOBILE RECHERCHE AVANCÉE --> */}
+                    {/* 底下是手机的先不要管_______________________________________________ */}
                     <aside
                         className="menu__mobile menu--close menu__mobile--white"
                         aria-label="aside-search-close"

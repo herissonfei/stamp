@@ -24,7 +24,7 @@ select {
 button[type="submit"] {
     padding: 0.5rem 1rem;
     font-size: 1rem;
-    background-color: #007bff;
+    background-color: #f1efe5;
     color: #fff;
     border: none;
     cursor: pointer;
