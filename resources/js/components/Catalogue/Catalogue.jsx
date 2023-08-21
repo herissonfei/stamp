@@ -2,73 +2,71 @@ import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom/client";
 import "/resources/css/app.css";
 import "./Catalogue.css";
+import axios from "axios";
 
 export default function Catalogue() {
     const [bids, setBids] = useState([]);
 
     // checkbox CONDITION
-    const [isCheckedParfaite, setIsCheckedParfaite] = useState(false);
-    const [isCheckedExcellente, setIsCheckedExcellente] = useState(false);
-    const [isCheckedBonne, setIsCheckedBonne] = useState(false);
-    const [isCheckedMoyenne, setIsCheckedMoyenne] = useState(false);
-    const [isCheckedEndommage, setIsCheckedEndommage] = useState(false);
+    const [selectedCategoriesConditions, setselectedCategoriesConditions] =
+        useState([]);
 
-    const handleCheckboxChangeParfaite = () => {
-        setIsCheckedParfaite(!isCheckedParfaite);
-    };
-
-    const handleCheckboxChangeExcellente = () => {
-        setIsCheckedExcellente(!isCheckedExcellente);
-    };
-
-    const handleCheckboxChangeBonne = () => {
-        setIsCheckedBonne(!isCheckedBonne);
-    };
-
-    const handleCheckboxChangeMoyenne = () => {
-        setIsCheckedMoyenne(!isCheckedMoyenne);
-    };
-
-    const handleCheckboxChangeEndommage = () => {
-        setIsCheckedEndommage(!isCheckedEndommage);
+    const handleCategoryChange = (category) => {
+        if (selectedCategoriesConditions.includes(category)) {
+            setselectedCategoriesConditions(
+                selectedCategoriesConditions.filter((cat) => cat !== category)
+            );
+        } else {
+            setselectedCategoriesConditions([
+                ...selectedCategoriesConditions,
+                category,
+            ]);
+        }
     };
 
     // checkbox TYPE
-    const [isCheckedGénéral, setIsCheckedGénéral] = useState(false);
-    const [isCheckedCourrierAérien, setIsCheckedCourrierAérien] =
-        useState(false);
-    const [isCheckedLivret, setIsCheckedLivret] = useState(false);
-    const [isCheckedPortdû, setIsCheckedPortdû] = useState(false);
-    const [isCheckedCartePostale, setIsCheckedCartePostale] = useState(false);
-    const [isCheckedSemiPostal, setIsCheckedSemiPostal] = useState(false);
-    const [isCheckedEntierPostal, setIsCheckedEntierPostal] = useState(false);
+    const [selectedCategoriesTypes, setSelectedCategoriesTypes] = useState([]);
 
-    const handleCheckboxChangeGénéral = () => {
-        setIsCheckedGénéral(!isCheckedGénéral);
+    const handleCheckboxchangeTypes = (category) => {
+        if (selectedCategoriesTypes.includes(category)) {
+            setSelectedCategoriesTypes(
+                selectedCategoriesTypes.filter((cat) => cat !== category)
+            );
+        } else {
+            setSelectedCategoriesTypes([...selectedCategoriesTypes, category]);
+        }
     };
 
-    const handleCheckboxChangeCourrierAérien = () => {
-        setIsCheckedCourrierAérien(!isCheckedCourrierAérien);
+    // Prix
+    const [minPrix, setMinPrix] = useState(0);
+    const [maxPrix, setMaxPrix] = useState(0);
+
+    const handleMinPrixChange = (event) => {
+        setMinPrix(parseInt(event.target.value));
     };
 
-    const handleCheckboxChangeLivret = () => {
-        setIsCheckedLivret(!isCheckedLivret);
+    const handleMaxPrixChange = (event) => {
+        setMaxPrix(parseInt(event.target.value));
     };
 
-    const handleCheckboxChangePortdû = () => {
-        setIsCheckedPortdû(!isCheckedPortdû);
+    // ANNÉE D'ÉMISSION
+    const [minAnnee, setMinAnnee] = useState(1900);
+    const [maxAnnee, setMaxAnnee] = useState(2023);
+
+    const handleMinAnneeChange = (event) => {
+        if (
+            isNaN(parseInt(event.target.value))
+            // ||
+            // parseInt(event.target.value) < 1900
+        ) {
+            setMinAnnee(1900);
+        } else {
+            setMinAnnee(parseInt(event.target.value));
+        }
     };
 
-    const handleCheckboxChangeCartePostale = () => {
-        setIsCheckedCartePostale(!isCheckedCartePostale);
-    };
-
-    const handleCheckboxChangeSemiPostal = () => {
-        setIsCheckedSemiPostal(!isCheckedSemiPostal);
-    };
-
-    const handleCheckboxChangeEntierPostal = () => {
-        setIsCheckedEntierPostal(!isCheckedEntierPostal);
+    const handleMaxAnneeChange = (event) => {
+        setMaxAnnee(parseInt(event.target.value));
     };
 
     useEffect(() => {
@@ -90,30 +88,33 @@ export default function Catalogue() {
         // 在这里可以使用 selectedOption 的值进行进一步处理
         // select
         // console.log("选中的选项是：", selectedOption);
-
-        // checkbox CONDITION
-        // console.log("Checkbox Parfaite 选中状态：", isCheckedParfaite);
-        // console.log("Checkbox Excellente 选中状态：", isCheckedExcellente);
-        // console.log("Checkbox isCheckedBonne 选中状态：", isCheckedBonne);
-        // console.log("Checkbox isCheckedMoyenne 选中状态：", isCheckedMoyenne);
-        // console.log(
-        //     "Checkbox isCheckedEndommage 选中状态：",
-        //     isCheckedEndommage
-        // );
-
-        // checkbox TYPE
-        // console.log(isCheckedGénéral);
-        // console.log(isCheckedCourrierAérien);
-        // console.log(isCheckedLivret);
-        // console.log(isCheckedPortdû);
-        // console.log(isCheckedCartePostale);
-        // console.log(isCheckedSemiPostal);
-        // console.log(isCheckedEntierPostal);
     };
 
     const handleChercher = (event) => {
         event.preventDefault();
+        console.log(selectedOption);
+        const data = {
+            selectedCategoriesConditions,
+            selectedCategoriesTypes,
+            minAnnee,
+            maxAnnee,
+            minPrix,
+            maxPrix,
+            selectedOption,
+        };
+
+        // console.log(data);
+
         console.log("chercher");
+        axios.post("/enchere/filter", data).then((res) => {
+            console.log("这是后端返回来的数据", res.data);
+            setBids(res.data);
+        });
+        // console.log(minAnnee);
+        // console.log(maxAnnee);
+
+        // console.log(minPrix);
+        // console.log(maxPrix);
         // 在这里可以使用 selectedOption 的值进行进一步处理
         // select
         // console.log("选中的选项是：", selectedOption);
@@ -275,17 +276,23 @@ export default function Catalogue() {
                                 <div>
                                     <input
                                         type="checkbox"
-                                        checked={isCheckedParfaite}
-                                        onChange={handleCheckboxChangeParfaite}
+                                        checked={selectedCategoriesConditions.includes(
+                                            "Parfaite"
+                                        )}
+                                        onChange={() =>
+                                            handleCategoryChange("Parfaite")
+                                        }
                                     />
                                     <label>Parfaite</label>
                                 </div>
                                 <div>
                                     <input
                                         type="checkbox"
-                                        checked={isCheckedExcellente}
-                                        onChange={
-                                            handleCheckboxChangeExcellente
+                                        checked={selectedCategoriesConditions.includes(
+                                            "Excellente"
+                                        )}
+                                        onChange={() =>
+                                            handleCategoryChange("Excellente")
                                         }
                                     />
                                     <label>Excellente</label>
@@ -293,24 +300,36 @@ export default function Catalogue() {
                                 <div>
                                     <input
                                         type="checkbox"
-                                        checked={isCheckedBonne}
-                                        onChange={handleCheckboxChangeBonne}
+                                        checked={selectedCategoriesConditions.includes(
+                                            "Bonne"
+                                        )}
+                                        onChange={() =>
+                                            handleCategoryChange("Bonne")
+                                        }
                                     />
                                     <label>Bonne</label>
                                 </div>
                                 <div>
                                     <input
                                         type="checkbox"
-                                        checked={isCheckedMoyenne}
-                                        onChange={handleCheckboxChangeMoyenne}
+                                        checked={selectedCategoriesConditions.includes(
+                                            "Moyenne"
+                                        )}
+                                        onChange={() =>
+                                            handleCategoryChange("Moyenne")
+                                        }
                                     />
                                     <label>Moyenne</label>
                                 </div>
                                 <div>
                                     <input
                                         type="checkbox"
-                                        checked={isCheckedEndommage}
-                                        onChange={handleCheckboxChangeEndommage}
+                                        checked={selectedCategoriesConditions.includes(
+                                            "Endommagé"
+                                        )}
+                                        onChange={() =>
+                                            handleCategoryChange("Endommagé")
+                                        }
                                     />
                                     <label>Endommagé</label>
                                 </div>
@@ -325,17 +344,17 @@ export default function Catalogue() {
                                     <option defaultValue value="tous">
                                         Tous les pays
                                     </option>
-                                    <option value="royaume-uni">
+                                    <option value="Royaume-Uni">
                                         Royaume-Uni
                                     </option>
-                                    <option value="etats-unis">
+                                    <option value="États-unis">
                                         États-unis
                                     </option>
-                                    <option value="canada">Canada</option>
-                                    <option value="australie">Australie</option>
-                                    <option value="chine">Chine</option>
-                                    <option value="france">France</option>
-                                    <option value="espagne">Espagne</option>
+                                    <option value="Canada">Canada</option>
+                                    <option value="Australie">Australie</option>
+                                    <option value="Chine">Chine</option>
+                                    <option value="France">France</option>
+                                    <option value="Espagne">Espagne</option>
                                 </select>
                             </section>
                             <section>
@@ -345,6 +364,8 @@ export default function Catalogue() {
                                         <input
                                             type="number"
                                             placeholder="00.00"
+                                            value={minPrix}
+                                            onChange={handleMinPrixChange}
                                         />
                                         <span>$&nbsp;-</span>
                                     </div>
@@ -352,6 +373,8 @@ export default function Catalogue() {
                                         <input
                                             type="number"
                                             aria-label="input-price"
+                                            value={maxPrix}
+                                            onChange={handleMaxPrixChange}
                                         />
                                         <span>$</span>
                                     </div>
@@ -363,17 +386,25 @@ export default function Catalogue() {
                                     {/* 这一块的name可能需要删除 */}
                                     <input
                                         type="checkbox"
-                                        checked={isCheckedGénéral}
-                                        onChange={handleCheckboxChangeGénéral}
+                                        checked={selectedCategoriesTypes.includes(
+                                            "Général"
+                                        )}
+                                        onChange={() =>
+                                            handleCheckboxchangeTypes("Général")
+                                        }
                                     />
                                     <label>Général</label>
                                 </div>
                                 <div>
                                     <input
                                         type="checkbox"
-                                        checked={isCheckedCourrierAérien}
-                                        onChange={
-                                            handleCheckboxChangeCourrierAérien
+                                        checked={selectedCategoriesTypes.includes(
+                                            "Courrier Aérien"
+                                        )}
+                                        onChange={() =>
+                                            handleCheckboxchangeTypes(
+                                                "Courrier Aérien"
+                                            )
                                         }
                                     />
                                     <label>Courrier Aérien</label>
@@ -381,25 +412,37 @@ export default function Catalogue() {
                                 <div>
                                     <input
                                         type="checkbox"
-                                        checked={isCheckedLivret}
-                                        onChange={handleCheckboxChangeLivret}
+                                        checked={selectedCategoriesTypes.includes(
+                                            "Livret"
+                                        )}
+                                        onChange={() =>
+                                            handleCheckboxchangeTypes("Livret")
+                                        }
                                     />
                                     <label>Livret</label>
                                 </div>
                                 <div>
                                     <input
                                         type="checkbox"
-                                        checked={isCheckedPortdû}
-                                        onChange={handleCheckboxChangePortdû}
+                                        checked={selectedCategoriesTypes.includes(
+                                            "Port dû"
+                                        )}
+                                        onChange={() =>
+                                            handleCheckboxchangeTypes("Port dû")
+                                        }
                                     />
                                     <label>Port dû</label>
                                 </div>
                                 <div>
                                     <input
                                         type="checkbox"
-                                        checked={isCheckedCartePostale}
-                                        onChange={
-                                            handleCheckboxChangeCartePostale
+                                        checked={selectedCategoriesTypes.includes(
+                                            "Carte postale"
+                                        )}
+                                        onChange={() =>
+                                            handleCheckboxchangeTypes(
+                                                "Carte postale"
+                                            )
                                         }
                                     />
                                     <label>Carte postale</label>
@@ -407,9 +450,13 @@ export default function Catalogue() {
                                 <div>
                                     <input
                                         type="checkbox"
-                                        checked={isCheckedSemiPostal}
-                                        onChange={
-                                            handleCheckboxChangeSemiPostal
+                                        checked={selectedCategoriesTypes.includes(
+                                            "Semi postal"
+                                        )}
+                                        onChange={() =>
+                                            handleCheckboxchangeTypes(
+                                                "Semi postal"
+                                            )
                                         }
                                     />
                                     <label>Semi postal</label>
@@ -417,9 +464,13 @@ export default function Catalogue() {
                                 <div>
                                     <input
                                         type="checkbox"
-                                        checked={isCheckedEntierPostal}
-                                        onChange={
-                                            handleCheckboxChangeEntierPostal
+                                        checked={selectedCategoriesTypes.includes(
+                                            "Entier postal"
+                                        )}
+                                        onChange={() =>
+                                            handleCheckboxchangeTypes(
+                                                "Entier postal"
+                                            )
                                         }
                                     />
                                     <label>Entier postal</label>
@@ -432,16 +483,22 @@ export default function Catalogue() {
                                         <input
                                             type="number"
                                             aria-label="input-year-min"
+                                            value={minAnnee}
+                                            onChange={handleMinAnneeChange}
+                                            min={1900}
                                         />
                                         <span>-</span>
                                     </div>
                                     <input
                                         type="number"
                                         aria-label="input-year-max"
+                                        value={maxAnnee}
+                                        onChange={handleMaxAnneeChange}
                                     />
                                 </div>
                             </section>
-                            <section>
+                            {/* 没法搜索，先注释起来 */}
+                            {/* <section>
                                 <h3>Dimensions (pouces)</h3>
                                 <div className="wrapper--header">
                                     <div className="wrapper--header">
@@ -457,7 +514,7 @@ export default function Catalogue() {
                                         aria-label="input-dimension-width"
                                     />
                                 </div>
-                            </section>
+                            </section> */}
                             <div className="wrapper--header">
                                 <div>
                                     {/* <a className="btn btn--text-icone">
@@ -750,7 +807,7 @@ export default function Catalogue() {
                                                 {bid.auctionCount}&nbsp;offre
                                             </span>
                                         </p>
-                                        <span>10.50$</span>
+                                        <span>{bid.reservePrice}$</span>
                                         <p className="tile__text-small">
                                             <small>
                                                 {/* 回过头看 */}

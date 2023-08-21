@@ -58,6 +58,9 @@ Route::get('/getOneBid/{id}', [BidController::class, 'getOneBid']);
 // 获取当前登录用户所拥有的所有拍卖bid
 Route::get('/getBidsPrive', [BidController::class, 'getBidsPrive']);
 
+// bids的筛选
+Route::post("/enchere/filter", [BidController::class,'filter']);
+
 
 
 // ----------------------------------------------------------------------------发布竞拍
