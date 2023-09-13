@@ -99,231 +99,274 @@ export default function Publish() {
 
     return (
         <div className="container">
-            <h1 className="black">邮票竞拍表单</h1>
+            {/* <h1 className="black">邮票竞拍表单</h1> */}
             <form onSubmit={handleSubmit} encType="multipart/form-data">
-                <div className="form-group">
-                    <input type="file" onChange={handleFileChange} />
+                <div className="formContainer">
+                    <div className="formContainer--div">
+                        
+
+                        <div className="form-group">
+                            <label className="labelForm" htmlFor="bidderId">
+                                当前登录的用户的ID:
+                            </label>
+                            <input
+                                type="text"
+                                id="bidderId"
+                                value={bidderId}
+                                onChange={(event) =>
+                                    setBidderId(event.target.value)
+                                }
+                            />
+                        </div>
+
+                        <div className="form-group">
+                            <label className="labelForm" htmlFor="startDate">
+                                startDate:
+                            </label>
+                            <input
+                                type="date"
+                                id="startDate"
+                                value={startDate}
+                                onChange={(event) =>
+                                    setStartDate(event.target.value)
+                                }
+                            />
+                        </div>
+
+                        <div className="form-group">
+                            <label className="labelForm" htmlFor="endDate">
+                                endDate:
+                            </label>
+                            <input
+                                type="date"
+                                id="endDate"
+                                value={endDate}
+                                onChange={(event) =>
+                                    setEndDate(event.target.value)
+                                }
+                            />
+                        </div>
+                        <div className="form-group">
+                            <label className="labelForm" htmlFor="favorites">
+                                favorites:
+                            </label>
+                            <input
+                                type="text"
+                                id="favorites"
+                                value={favorites}
+                                onChange={(event) =>
+                                    setFavorites(event.target.value)
+                                }
+                            />
+                        </div>
+
+                        <div className="form-group">
+                            <label className="labelForm" htmlFor="name">
+                                name:
+                            </label>
+                            <input
+                                type="text"
+                                id="name"
+                                value={name}
+                                onChange={(event) =>
+                                    setName(event.target.value)
+                                }
+                            />
+                        </div>
+
+                        <div className="form-group">
+                            <label className="labelForm" htmlFor="creationDate">
+                                creationDate:
+                            </label>
+                            <input
+                                type="date"
+                                id="creationDate"
+                                value={creationDate}
+                                onChange={(event) =>
+                                    setCreationDate(event.target.value)
+                                }
+                            />
+                        </div>
+                        <div className="form-group">
+                            <label className="labelForm" htmlFor="bidTime">
+                                bidTime:
+                            </label>
+                            <input
+                                type="date"
+                                id="bidTime"
+                                value={bidTime}
+                                onChange={(event) =>
+                                    setBidTime(event.target.value)
+                                }
+                            />
+                        </div>
+                        <div className="form-group">
+                            <label
+                                className="labelForm"
+                                htmlFor="startingPrice"
+                            >
+                                startingPrice:
+                            </label>
+                            <input
+                                type="number"
+                                id="startingPrice"
+                                value={startingPrice}
+                                onChange={(event) =>
+                                    setStartingPrice(event.target.value)
+                                }
+                            />
+                        </div>
+                        <div className="form-group">
+                            <label className="labelForm" htmlFor="reservePrice">
+                                reservePrice:
+                            </label>
+                            <input
+                                type="number"
+                                id="reservePrice"
+                                value={reservePrice}
+                                onChange={(event) =>
+                                    setreservePrice(event.target.value)
+                                }
+                            />
+                        </div>
+                        <div className="form-group">
+                            <input type="file" onChange={handleFileChange} />
+                        </div>
+                        {/* ---- */}
+                    </div>
+                    <div className="formContainer--div">
+                        
+
+                        <div className="form-group">
+                            <label className="labelForm" htmlFor="dimensions">
+                                dimensions:
+                            </label>
+                            <input
+                                type="text"
+                                id="dimensions"
+                                value={dimensions}
+                                onChange={(event) =>
+                                    setDimensions(event.target.value)
+                                }
+                            />
+                        </div>
+
+                        <div className="form-group">
+                            <label className="labelForm" htmlFor="conditions">
+                                conditions:
+                            </label>
+                            <input
+                                type="text"
+                                id="conditions"
+                                value={conditions}
+                                onChange={(event) =>
+                                    setConditions(event.target.value)
+                                }
+                            />
+                        </div>
+
+                        <div className="form-group">
+                            <label className="labelForm" htmlFor="status">
+                                status:
+                            </label>
+                            <input
+                                type="text"
+                                id="status"
+                                value={status}
+                                onChange={(event) =>
+                                    setStatus(event.target.value)
+                                }
+                            />
+                        </div>
+
+                        <div className="form-group">
+                            <label className="labelForm" htmlFor="certified">
+                                certified:
+                            </label>
+                            <input
+                                type="text"
+                                id="certified"
+                                value={certified}
+                                onChange={(event) =>
+                                    setCertified(event.target.value)
+                                }
+                            />
+                        </div>
+
+                        <div className="form-group">
+                            <label className="labelForm" htmlFor="description">
+                                description:
+                            </label>
+                            <textarea
+                                id="description"
+                                value={description}
+                                onChange={(event) =>
+                                    setDescription(event.target.value)
+                                }
+                            ></textarea>
+                        </div>
+
+                        <div className="form-group">
+                            <label className="labelForm" htmlFor="type">
+                                type:
+                            </label>
+                            <input
+                                type="text"
+                                id="type"
+                                value={type}
+                                onChange={(event) =>
+                                    setType(event.target.value)
+                                }
+                            />
+                        </div>
+                       
+
+                        <div className="form-group">
+                            <label className="labelForm" htmlFor="auctionCount">
+                                auctionCount:
+                            </label>
+                            <input
+                                type="number"
+                                id="auctionCount"
+                                value={auctionCount}
+                                onChange={(event) =>
+                                    setAuctionCount(event.target.value)
+                                }
+                            />
+                        </div>
+
+                     
+                        
+
+                        <div className="form-group">
+                            <label className="labelForm" htmlFor="country">
+                                startingPrice:
+                            </label>
+                            <input
+                                type="text"
+                                id="country"
+                                value={country}
+                                onChange={(event) =>
+                                    setCountry(event.target.value)
+                                }
+                            />
+                        </div>
+                        <div className="form-group">
+                            <label className="labelForm" htmlFor="type">
+                                Type:
+                            </label>
+                            <input
+                                type="text"
+                                id="type"
+                                value={type}
+                                onChange={(event) =>
+                                    setCountry(event.target.value)
+                                }
+                            />
+                        </div>
+                    </div>
                 </div>
 
-                <div className="form-group">
-                    <label className="labelForm" htmlFor="bidderId">
-                        当前登录的用户的ID:
-                    </label>
-                    <input
-                        type="text"
-                        id="bidderId"
-                        value={bidderId}
-                        onChange={(event) => setBidderId(event.target.value)}
-                    />
-                </div>
-
-                <div className="form-group">
-                    <label className="labelForm" htmlFor="startDate">
-                        startDate:
-                    </label>
-                    <input
-                        type="date"
-                        id="startDate"
-                        value={startDate}
-                        onChange={(event) => setStartDate(event.target.value)}
-                    />
-                </div>
-
-                <div className="form-group">
-                    <label className="labelForm" htmlFor="endDate">
-                        endDate:
-                    </label>
-                    <input
-                        type="date"
-                        id="endDate"
-                        value={endDate}
-                        onChange={(event) => setEndDate(event.target.value)}
-                    />
-                </div>
-
-                <div className="form-group">
-                    <label className="labelForm" htmlFor="favorites">
-                        favorites:
-                    </label>
-                    <input
-                        type="text"
-                        id="favorites"
-                        value={favorites}
-                        onChange={(event) => setFavorites(event.target.value)}
-                    />
-                </div>
-
-                <div className="form-group">
-                    <label className="labelForm" htmlFor="name">
-                        name:
-                    </label>
-                    <input
-                        type="text"
-                        id="name"
-                        value={name}
-                        onChange={(event) => setName(event.target.value)}
-                    />
-                </div>
-
-                <div className="form-group">
-                    <label className="labelForm" htmlFor="creationDate">
-                        creationDate:
-                    </label>
-                    <input
-                        type="date"
-                        id="creationDate"
-                        value={creationDate}
-                        onChange={(event) =>
-                            setCreationDate(event.target.value)
-                        }
-                    />
-                </div>
-
-                <div className="form-group">
-                    <label className="labelForm" htmlFor="dimensions">
-                        dimensions:
-                    </label>
-                    <input
-                        type="text"
-                        id="dimensions"
-                        value={dimensions}
-                        onChange={(event) => setDimensions(event.target.value)}
-                    />
-                </div>
-
-                <div className="form-group">
-                    <label className="labelForm" htmlFor="conditions">
-                        conditions:
-                    </label>
-                    <input
-                        type="text"
-                        id="conditions"
-                        value={conditions}
-                        onChange={(event) => setConditions(event.target.value)}
-                    />
-                </div>
-
-                <div className="form-group">
-                    <label className="labelForm" htmlFor="status">
-                        status:
-                    </label>
-                    <input
-                        type="text"
-                        id="status"
-                        value={status}
-                        onChange={(event) => setStatus(event.target.value)}
-                    />
-                </div>
-
-                <div className="form-group">
-                    <label className="labelForm" htmlFor="certified">
-                        certified:
-                    </label>
-                    <input
-                        type="text"
-                        id="certified"
-                        value={certified}
-                        onChange={(event) => setCertified(event.target.value)}
-                    />
-                </div>
-
-                <div className="form-group">
-                    <label className="labelForm" htmlFor="description">
-                        description:
-                    </label>
-                    <textarea
-                        id="description"
-                        value={description}
-                        onChange={(event) => setDescription(event.target.value)}
-                    ></textarea>
-                </div>
-
-                <div className="form-group">
-                    <label className="labelForm" htmlFor="type">
-                        type:
-                    </label>
-                    <input
-                        type="text"
-                        id="type"
-                        value={type}
-                        onChange={(event) => setType(event.target.value)}
-                    />
-                </div>
-                <div className="form-group">
-                    <label className="labelForm" htmlFor="bidTime">
-                        bidTime:
-                    </label>
-                    <input
-                        type="date"
-                        id="bidTime"
-                        value={bidTime}
-                        onChange={(event) => setBidTime(event.target.value)}
-                    />
-                </div>
-
-                <div className="form-group">
-                    <label className="labelForm" htmlFor="auctionCount">
-                        auctionCount:
-                    </label>
-                    <input
-                        type="number"
-                        id="auctionCount"
-                        value={auctionCount}
-                        onChange={(event) =>
-                            setAuctionCount(event.target.value)
-                        }
-                    />
-                </div>
-
-                <div className="form-group">
-                    <label className="labelForm" htmlFor="reservePrice">
-                        reservePrice:
-                    </label>
-                    <input
-                        type="number"
-                        id="reservePrice"
-                        value={reservePrice}
-                        onChange={(event) =>
-                            setreservePrice(event.target.value)
-                        }
-                    />
-                </div>
-                <div className="form-group">
-                    <label className="labelForm" htmlFor="startingPrice">
-                        startingPrice:
-                    </label>
-                    <input
-                        type="number"
-                        id="startingPrice"
-                        value={startingPrice}
-                        onChange={(event) =>
-                            setStartingPrice(event.target.value)
-                        }
-                    />
-                </div>
-
-                <div className="form-group">
-                    <label className="labelForm" htmlFor="country">
-                        startingPrice:
-                    </label>
-                    <input
-                        type="text"
-                        id="country"
-                        value={country}
-                        onChange={(event) => setCountry(event.target.value)}
-                    />
-                </div>
-                <div className="form-group">
-                    <label className="labelForm" htmlFor="type">
-                        Type:
-                    </label>
-                    <input
-                        type="text"
-                        id="type"
-                        value={type}
-                        onChange={(event) => setCountry(event.target.value)}
-                    />
-                </div>
                 <button type="submit">上传</button>
             </form>
             {/* <form onSubmit={handleSubmit}>
