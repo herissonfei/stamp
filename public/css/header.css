@@ -104,6 +104,13 @@ header .input-bar__input {
   margin-top: 55px;
 }
 
+.menu__sous-menu--header--login {
+  flex-grow: 2;
+  justify-content: right;
+  margin-right: 100px;
+  margin-top: 32px;
+}
+
 .menu__item {
   color: var(--color-primary-second-variation);
   font-family: var(--font-primary);
@@ -122,6 +129,15 @@ header .input-bar__input {
   width: 1px;
 }
 
+.divid:after {
+  content: "";
+  background: white;
+  position: absolute;
+  top: 35%;
+  right: 0;
+  height: 30%;
+  width: 1px;
+}
 /* @media only screen and (min-width: 1200px) {
   .header {
       display: block;

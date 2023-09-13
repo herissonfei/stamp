@@ -5,8 +5,11 @@ import "./Catalogue.css";
 import axios from "axios";
 
 export default function Catalogue() {
+    // 最原始不会变动的bids
+    const [bidsData, setBidsData] = useState([]);
     const [bids, setBids] = useState([]);
 
+    // ------------------------------------筛选
     // checkbox CONDITION
     const [selectedCategoriesConditions, setselectedCategoriesConditions] =
         useState([]);
@@ -71,8 +74,8 @@ export default function Catalogue() {
 
     useEffect(() => {
         axios.get("/getAllBids").then((res) => {
-            // console.log(res.data);
             setBids(res.data);
+            setBidsData(res.data);
         });
     }, []);
 
@@ -84,10 +87,13 @@ export default function Catalogue() {
 
     const handleParDefault = (event) => {
         event.preventDefault();
-        console.log("par default");
-        // 在这里可以使用 selectedOption 的值进行进一步处理
-        // select
-        // console.log("选中的选项是：", selectedOption);
+        // console.log("par default");
+        // 将checkbox改为未选中
+        setselectedCategoriesConditions([]);
+        setSelectedCategoriesTypes([]);
+        axios.get("/getAllBids").then((res) => {
+            setBids(res.data);
+        });
     };
 
     const handleChercher = (event) => {
@@ -139,6 +145,28 @@ export default function Catalogue() {
         // console.log(isCheckedEntierPostal);
     };
 
+    // ----------------------------------------------筛选结束
+
+    // -----------------------------------Tri 排序
+
+    const handleSortChange = (event) => {
+        console.log(event.target.value);
+        if (event.target.value == "decroissant") {
+            const Bidsdecroissant = [...bids].sort((a, b) => {
+                return b.reservePrice - a.reservePrice;
+            });
+            setBids(Bidsdecroissant);
+        } else if (event.target.value == "croissant") {
+            // console.log('2');
+            const Bidscroissant = [...bids].sort((a, b) => {
+                return a.reservePrice - b.reservePrice;
+            });
+            setBids(Bidscroissant);
+        } else if (event.target.value == "tous") {
+            setBids(bidsData);
+        }
+    };
+
     return (
         <div>
             {/* <!-- HERO --> */}
@@ -176,6 +204,7 @@ export default function Catalogue() {
                         className="menu-secondaire__select"
                         aria-label="select-sort-order"
                         defaultValue="Trier"
+                        onChange={handleSortChange}
                     >
                         <option disabled>Trier</option>
                         <option value="tous">Tous</option>

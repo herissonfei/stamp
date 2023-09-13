@@ -39,8 +39,9 @@
 				</div>
                 @endif
                
-                <ul class="wrapper--header menu__sous-menu menu__sous-menu--header">
+                
                     @guest
+                    <ul class="wrapper--header menu__sous-menu menu__sous-menu--header">
                         @if (Route::has('login'))
                             <li class="menu__item">
                                 <a class="navEntete-link" href="{{ route('login') }}">Se connecter</a>
@@ -52,27 +53,42 @@
                                 <a class="navEntete-link" href="{{ route('register') }}">Crée un compte</a>
                             </li>
                         @endif
+                        </ul>
                     @else
-                        <li class="menu__item">
-                            <a class="navEntete-link" href="#" role="button" href="#}}">
-                                Bonjour, {{ Auth::user()->name }}
-                            </a>
+                    <ul class="wrapper--header menu__sous-menu menu__sous-menu--header--login">
+                        <div>
+                            <li class="menu__item divid">
+                                <a class="navEntete-link" href="#" role="button" href="#}}">
+                                    Bonjour, {{ Auth::user()->name }}
+                                </a>
+                            
+                        
+                            </li>
+                            <li class="menu__item divid">
                             <a class="navEntete-link" href="/publish" role="button" href="#}}">
-                                publier une enchère
-                            </a>
-                            <a class="navEntete-link" href="/listePrive" role="button" href="#}}">
-                                mes enchères
-                            </a>
-                        </li>
+                                    publier une enchère
+                                </a>
+                            </li>
+                        </div>
 
+                        <div>
                         <li class="menu__item">
-                            <a class="" href="{{ route('logout') }}">Se déconnecter</a>
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                @csrf
-                            </form>
-                        </li>
+                                <a class="" href="{{ route('logout') }}">Se déconnecter</a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                </form>
+                            </li>  
+                            
+                            <li class="menu__item">
+                            <a class="navEntete-link" href="/listePrive" role="button" href="#}}">
+                                    mes enchères
+                                </a>
+                            </li>
+                        </div>
+                      
+                    </ul>
                     @endguest
-                </ul>
+                
                 
             </div>
 

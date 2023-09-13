@@ -12,15 +12,6 @@
     font-weight: bold;
 }
 
-/* input[type="text"],
-input[type="number"],
-textarea,
-select {
-    width: 100%;
-    padding: 0.5rem;
-    font-size: 1rem;
-} */
-
 button[type="submit"] {
     padding: 0.5rem 1rem;
     font-size: 1rem;
@@ -29,10 +20,6 @@ button[type="submit"] {
     border: none;
     cursor: pointer;
 }
-
-/* button[type="submit"]:hover {
-    background-color: #0056b3;
-} */
 
 .black {
     color: #000;

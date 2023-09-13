@@ -65,7 +65,7 @@ export default function Publish() {
         };
         // console.log(selectedFile);
         // console.log(selectedFile.name);
-
+        console.log(data);
         if (selectedFile) {
             const formData = new FormData();
             formData.append("image", selectedFile);
@@ -88,6 +88,7 @@ export default function Publish() {
         // console.log("表单已提交");
         axios.post("/uploadFormData", data).then((res) => {
             console.log(res.data);
+            window.history.back();
         });
         console.log(data);
     };
