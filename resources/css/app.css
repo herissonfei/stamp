@@ -347,7 +347,7 @@ small {
     }
 
     .grid--5-var {
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(5, 1fr);
     }
 
     .grid--5-second-var .tile:last-of-type {

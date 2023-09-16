@@ -367,7 +367,7 @@ export default function Publish() {
                     </div>
                 </div>
 
-                <button type="submit">上传</button>
+                <button type="submit" className="blue">上传</button>
             </form>
             {/* <form onSubmit={handleSubmit}>
                 

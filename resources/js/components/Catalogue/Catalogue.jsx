@@ -3,12 +3,31 @@ import ReactDOM from "react-dom/client";
 import "/resources/css/app.css";
 import "./Catalogue.css";
 import axios from "axios";
+import Pagination from "../Pagination";
 
 export default function Catalogue() {
+    // TEST-------------------------------------
+    const [currentPage, setCurrentPage] = useState(1);
+    // console.log(currentPage);
+    const handlePageChange = (newPage) => {
+        setCurrentPage(newPage);
+
+        const itemsPerPage = 10;
+        const startIndex = (newPage - 1) * itemsPerPage;
+        const endIndex = startIndex + itemsPerPage;
+
+        const newData = bidsData.slice(startIndex, endIndex);
+
+        setBids(newData);
+    };
+
     // 最原始不会变动的bids
     const [bidsData, setBidsData] = useState([]);
-    const [bids, setBids] = useState([]);
 
+    const [bids, setBids] = useState([]);
+    const [bidsCount, setBidsCount] = useState();
+    const totalPages =
+        bidsCount % 10 !== 0 ? bidsCount / 10 + 1 : bidsCount / 10;
     // ------------------------------------筛选
     // checkbox CONDITION
     const [selectedCategoriesConditions, setselectedCategoriesConditions] =
@@ -74,8 +93,15 @@ export default function Catalogue() {
 
     useEffect(() => {
         axios.get("/getAllBids").then((res) => {
-            setBids(res.data);
+            setBids(res.data.slice(0, 10));
             setBidsData(res.data);
+        });
+    }, []);
+
+    // 获取bids的总数量
+    useEffect(() => {
+        axios.get("/getBidsCount").then((res) => {
+            setBidsCount(res.data);
         });
     }, []);
 
@@ -92,13 +118,15 @@ export default function Catalogue() {
         setselectedCategoriesConditions([]);
         setSelectedCategoriesTypes([]);
         axios.get("/getAllBids").then((res) => {
+            console.log(res.data);
             setBids(res.data);
         });
+        setSelectedOption("Tous les pays");
     };
 
     const handleChercher = (event) => {
         event.preventDefault();
-        console.log(selectedOption);
+
         const data = {
             selectedCategoriesConditions,
             selectedCategoriesTypes,
@@ -109,40 +137,11 @@ export default function Catalogue() {
             selectedOption,
         };
 
-        // console.log(data);
-
-        console.log("chercher");
         axios.post("/enchere/filter", data).then((res) => {
             console.log("这是后端返回来的数据", res.data);
+            console.log(res.data.length);
             setBids(res.data);
         });
-        // console.log(minAnnee);
-        // console.log(maxAnnee);
-
-        // console.log(minPrix);
-        // console.log(maxPrix);
-        // 在这里可以使用 selectedOption 的值进行进一步处理
-        // select
-        // console.log("选中的选项是：", selectedOption);
-
-        // checkbox CONDITION
-        // console.log("Checkbox Parfaite 选中状态：", isCheckedParfaite);
-        // console.log("Checkbox Excellente 选中状态：", isCheckedExcellente);
-        // console.log("Checkbox isCheckedBonne 选中状态：", isCheckedBonne);
-        // console.log("Checkbox isCheckedMoyenne 选中状态：", isCheckedMoyenne);
-        // console.log(
-        //     "Checkbox isCheckedEndommage 选中状态：",
-        //     isCheckedEndommage
-        // );
-
-        // checkbox TYPE
-        // console.log(isCheckedGénéral);
-        // console.log(isCheckedCourrierAérien);
-        // console.log(isCheckedLivret);
-        // console.log(isCheckedPortdû);
-        // console.log(isCheckedCartePostale);
-        // console.log(isCheckedSemiPostal);
-        // console.log(isCheckedEntierPostal);
     };
 
     // ----------------------------------------------筛选结束
@@ -170,6 +169,7 @@ export default function Catalogue() {
     return (
         <div>
             {/* <!-- HERO --> */}
+
             <div className="hero hero--page-interieure">
                 <div className="wrapper">
                     <h1 className="hero__text">Parcourez nos enchères</h1>
@@ -237,61 +237,13 @@ export default function Catalogue() {
 					src="img/png/icone-link-arrow.png" alt="fleche dropwdown" />
 			</button> */}
             </div>
-            <div className="menu__nav-page menu__nav-page-wrapper">
-                <div>
-                    <a>
-                        <img
-                            width="10"
-                            src="img/png/icone-link-arrow-blue-left.png"
-                            alt="fleche dropwdown"
-                        />
-                    </a>
-                </div>
-                <div>
-                    <a>
-                        <span>1</span>
-                    </a>
-                </div>
-                <div>
-                    <a>
-                        <span>2</span>
-                    </a>
-                </div>
-                <div>
-                    <a>
-                        <span>3</span>
-                    </a>
-                </div>
-                <div>
-                    <a>
-                        <span>4</span>
-                    </a>
-                </div>
-                <div>
-                    <a>
-                        <span>5</span>
-                    </a>
-                </div>
-                <div>
-                    <a>
-                        <span>...</span>
-                    </a>
-                </div>
-                <div>
-                    <a>
-                        <span>8</span>
-                    </a>
-                </div>
-                <div>
-                    <a>
-                        <img
-                            width="10"
-                            src="img/png/icone-link-arrow-blue.png"
-                            alt="fleche dropwdown"
-                        />
-                    </a>
-                </div>
-            </div>
+
+            <Pagination
+                currentPage={currentPage}
+                totalPages={totalPages}
+                onPageChange={handlePageChange}
+            />
+
             {/* <!-- GALLERIE ENCHÈRES --> */}
             <div className="wrapper gallery">
                 <div className="wrapper--header">
@@ -514,7 +466,7 @@ export default function Catalogue() {
                                             aria-label="input-year-min"
                                             value={minAnnee}
                                             onChange={handleMinAnneeChange}
-                                            min={1900}
+                                            // min={1900}
                                         />
                                         <span>-</span>
                                     </div>
@@ -749,58 +701,14 @@ export default function Catalogue() {
                     {/* <!-- CATALOGUE ENCHÈRES --> */}
                     <div className="wrapper--gallery">
                         <p className="gallery__text">
-                            142 enchères trouvées | 0 - 20 de 142
+                            {bids.length} enchères trouvées |{" "}
+                            {(currentPage - 1) * 10} -{" "}
+                            {currentPage * 10 > bidsCount
+                                ? bidsCount
+                                : currentPage * 10}{" "}
+                            de {bidsCount}
                         </p>
                         <div className="grid grid--5-var">
-                            {/* <Bid></Bid> */}
-
-                            {/* <div className="tile bg--tile">
-                                <div className="tile__container">
-                                    <div>
-                                        <p className="tile__lot">
-                                            Lot #<strong>23</strong>
-                                        </p>
-                                        <p className="tile__lot tile__lot--red">
-                                            <strong>14d-8h-56m-2s</strong>
-                                        </p>
-                                    </div>
-                                    <img
-                                        className="icone-coup-coeur"
-                                        src="img/png/icone-coup-de-coeur.png"
-                                        alt="icone coup de coeur lord"
-                                    />
-                                </div>
-                                <div className="tile__wrapper">
-                                    <div className="tile__img-wrapper">
-                                        <a href="enchere.html">
-                                            <img
-                                                className="tile__img"
-                                                src="img/jpg/hero-enchere.jpg"
-                                                alt="Image d'une enchère'"
-                                            />
-                                        </a>
-                                    </div>
-                                    <h3>CYPRUS 95 LH</h3>
-                                    <p className="tile__text">
-                                        Mise courante |{" "}
-                                        <span>1&nbsp;offre</span>
-                                    </p>
-                                    <span>10.50$</span>
-                                    <p className="tile__text-small">
-                                        <small>
-                                            dernière offre par user2022
-                                        </small>
-                                    </p>
-                                    <a
-                                        className="btn tile__btn"
-                                        href="enchere.html"
-                                    >
-                                        Miser
-                                    </a>
-                                </div>
-                            </div> */}
-                            {/* --------------开始循环 */}
-                            {/* {bids.map(bid => <li key={bid.id}>{bid.name}</li>)} */}
                             {bids.map((bid) => (
                                 <div className="tile bg--tile" key={bid.id}>
                                     <div className="tile__container">
@@ -912,7 +820,7 @@ export default function Catalogue() {
                         </div>
                     </div>
                     <p className="gallery__text gallery__text--right">
-                        142 enchères trouvées | 0 - 20 de 142
+                        {bids.length} enchères trouvées | 0 - 20 de {bidsCount}
                     </p>
                 </div>
             </div>

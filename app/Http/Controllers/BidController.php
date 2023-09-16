@@ -24,6 +24,15 @@ class BidController extends Controller
         return response()->json($bids);
     }
 
+     // 获取Bids的数量
+     public function getBidsCount()
+     {
+        $totalBids = Bid::count();
+         return $totalBids;
+ 
+       
+     }
+
     public function getOneBid($id)
     {
         //bids,  stamps
