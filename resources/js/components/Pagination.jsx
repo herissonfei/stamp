@@ -1,9 +1,14 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom/client";
 
-export default function Pagination({ currentPage, totalPages, onPageChange }) {
+export default function Pagination({
+    currentPage,
+    totalPages,
+    onPageChange,
+    changeClass,
+}) {
     const pageNumbers = [];
-
+    console.log(changeClass);
     for (let i = 1; i <= totalPages; i++) {
         pageNumbers.push(i);
     }
@@ -17,7 +22,7 @@ export default function Pagination({ currentPage, totalPages, onPageChange }) {
     };
 
     return [
-        <div className="menu__nav-page menu__nav-page-wrapper">
+        <div className={changeClass === 'true' ? "menu__nav-page menu__nav-page-wrapper" : "menu__nav-page menu__nav-page--var"}>
             <div
                 className={`${currentPage === 1 ? "disabled" : ""}`}
                 onClick={() => handlePageChange(currentPage - 1)}

@@ -242,6 +242,7 @@ export default function Catalogue() {
                 currentPage={currentPage}
                 totalPages={totalPages}
                 onPageChange={handlePageChange}
+                changeClass='true'
             />
 
             {/* <!-- GALLERIE ENCHÈRES --> */}
@@ -764,7 +765,7 @@ export default function Catalogue() {
                     </div>
                 </div>
                 <div className="wrapper--header-page">
-                    <div className="menu__nav-page menu__nav-page--var">
+                    {/* <div className="menu__nav-page menu__nav-page--var">
                         <div>
                             <a>
                                 <img
@@ -818,7 +819,13 @@ export default function Catalogue() {
                                 />
                             </a>
                         </div>
-                    </div>
+                    </div> */}
+                    <Pagination
+                currentPage={currentPage}
+                totalPages={totalPages}
+                onPageChange={handlePageChange}
+                changeClass='false'
+            />
                     <p className="gallery__text gallery__text--right">
                         {bids.length} enchères trouvées | 0 - 20 de {bidsCount}
                     </p>
