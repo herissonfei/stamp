@@ -8,6 +8,62 @@ export default function Enchere() {
 
     const [bid, setBid] = useState([]);
 
+    // 创建一个新的Date对象，该对象会表示当前的日期和时间
+    const now = new Date();
+
+    // 获取年、月、日、时、分、秒
+    const year = now.getFullYear();
+    const month = now.getMonth() + 1; // 月份是从0开始的，所以要加1
+    const day = now.getDate();
+    const hours = now.getHours();
+    const minutes = now.getMinutes();
+    const seconds = now.getSeconds();
+
+    // 使用模板字符串和padStart()方法来格式化日期和时间
+    const formattedDate = `${year}-${String(month).padStart(2, "0")}-${String(
+        day
+    ).padStart(2, "0")} ${String(hours).padStart(2, "0")}:${String(
+        minutes
+    ).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
+
+    // console.log(formattedDate);
+
+    // console.log(new Date(formattedDate).getTime());
+    // console.log(new Date(bid.endDate).getTime());
+
+    const fermeDans =
+        new Date(bid.endDate).getTime() > new Date(formattedDate).getTime()
+            ? dateDifference(bid.endDate, formattedDate)
+            : "Fermé";
+    // console.log(fermeDans);
+    function dateDifference(date1, date2) {
+        // 将两个日期转换为毫秒值
+        const timestamp1 = new Date(date1).getTime();
+        const timestamp2 = new Date(date2).getTime();
+
+        // 计算差值（毫秒）
+        let difference = Math.abs(timestamp2 - timestamp1);
+
+        // 计算天数、小时、分钟和秒数
+        const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+        difference -= days * 1000 * 60 * 60 * 24;
+
+        const hours = Math.floor(difference / (1000 * 60 * 60));
+        difference -= hours * 1000 * 60 * 60;
+
+        const minutes = Math.floor(difference / (1000 * 60));
+        difference -= minutes * 1000 * 60;
+
+        const seconds = Math.floor(difference / 1000);
+
+        return {
+            days,
+            hours,
+            minutes,
+            seconds,
+        };
+    }
+
     useEffect(() => {
         axios.get(`/getOneBid/${id}`).then((res) => {
             setBid(res.data[0]);
@@ -52,11 +108,11 @@ export default function Enchere() {
                             <div className="tile__img-wrapper tile__img-wrapper--enchere">
                                 <img
                                     className="tile__img"
-                                    src="/img/jpg/hero-enchere.jpg"
+                                    src={bid.imageURL}
                                     alt="Image d'une enchère'"
                                 />
                             </div>
-                            <div className="gallery__nav">
+                            {/* <div className="gallery__nav">
                                 <div>
                                     <a>
                                         <img
@@ -91,6 +147,8 @@ export default function Enchere() {
                                             src="/img/jpg/encheres/thumbnail-enchere-2.jpg"
                                             alt="image de l'enchère"
                                         />
+                   
+                   
                                     </a>
                                 </div>
                                 <div>
@@ -102,7 +160,7 @@ export default function Enchere() {
                                         />
                                     </a>
                                 </div>
-                            </div>
+                            </div> */}
                         </div>
                         <div className="pannels--container">
                             <div className="pannel__detail wrapper--header">
@@ -136,31 +194,39 @@ export default function Enchere() {
                                 {/* <!-- Description panneau --> */}
                                 <div className="pannel__text" data-js-pannel>
                                     <p className="tile__text">
-                                        Mise courante | <strong>{bid.auctionCount} offre</strong>
+                                        Mise courante |{" "}
+                                        <strong>
+                                            {bid.auctionCount} offre
+                                        </strong>
                                     </p>
                                     <h2>{bid.reservePrice}$</h2>
                                     <p className="tile__text-small">
                                         <small>
-                                            dernière offre par user2022
+                                            {/* 之后再补 */}
+                                            {/* dernière offre par user2022 */}
                                         </small>
                                     </p>
                                     <p>
-                                        <strong>Description</strong> : {bid.description}
+                                        <strong>Description</strong> :{" "}
+                                        {bid.description}
                                     </p>
                                     <p>
                                         <strong>Type</strong> : {bid.type}
                                     </p>
                                     <p>
-                                        <strong>Condition</strong> : {bid.conditions}
+                                        <strong>Condition</strong> :{" "}
+                                        {bid.conditions}
                                     </p>
                                     <p>
-                                        <strong>Format</strong> : {bid.dimensions}
+                                        <strong>Format</strong> :{" "}
+                                        {bid.dimensions}
                                     </p>
                                     <p>
-                                        <strong>Année d'émission</strong> : {bid.creationDate}
+                                        <strong>Année d'émission</strong> :{" "}
+                                        {bid.creationDate}
                                     </p>
                                     <p>
-                                        <strong>Pays d'origine</strong> :
+                                        <strong>Pays d'origine</strong> :{" "}
                                         {bid.country}
                                     </p>
                                 </div>
@@ -182,11 +248,20 @@ export default function Enchere() {
                                 <div>
                                     <p>Ferme dans</p>
                                     <p className="tile__lot tile__lot--red">
-                                        <strong>21d-11h-12m-11s</strong>
+                                        <strong>
+                                            {/* {new Date(bid.endDate)} */}
+                                            {fermeDans == "Fermé" ? "Fermé" : `${fermeDans.days}d-${fermeDans.hours}
+                                            h-${fermeDans.minutes}m-
+                                            ${fermeDans.seconds}s`}
+                                            
+                                        </strong>
                                     </p>
-                                    <small>Début: 01/03/2022 | 00H00</small>
+                                    <small>
+                                        Début: {bid.startDate} | 00H00
+                                    </small>
                                     <br />
-                                    <small>Fin: 22/03/2022 | 00H00</small>
+
+                                    <small>Fin: {bid.endDate} | 00H00</small>
                                 </div>
                                 <div className="grid grid--3-btn">
                                     <input

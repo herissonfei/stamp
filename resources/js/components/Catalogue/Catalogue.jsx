@@ -242,7 +242,7 @@ export default function Catalogue() {
                 currentPage={currentPage}
                 totalPages={totalPages}
                 onPageChange={handlePageChange}
-                changeClass='true'
+                changeClass="true"
             />
 
             {/* <!-- GALLERIE ENCHÈRES --> */}
@@ -765,69 +765,19 @@ export default function Catalogue() {
                     </div>
                 </div>
                 <div className="wrapper--header-page">
-                    {/* <div className="menu__nav-page menu__nav-page--var">
-                        <div>
-                            <a>
-                                <img
-                                    width="10"
-                                    src="img/png/icone-link-arrow-blue-left.png"
-                                    alt="fleche dropwdown"
-                                />
-                            </a>
-                        </div>
-                        <div>
-                            <a>
-                                <span>1</span>
-                            </a>
-                        </div>
-                        <div>
-                            <a>
-                                <span>2</span>
-                            </a>
-                        </div>
-                        <div>
-                            <a>
-                                <span>3</span>
-                            </a>
-                        </div>
-                        <div>
-                            <a>
-                                <span>4</span>
-                            </a>
-                        </div>
-                        <div>
-                            <a>
-                                <span>5</span>
-                            </a>
-                        </div>
-                        <div>
-                            <a>
-                                <span>...</span>
-                            </a>
-                        </div>
-                        <div>
-                            <a>
-                                <span>8</span>
-                            </a>
-                        </div>
-                        <div>
-                            <a>
-                                <img
-                                    width="10"
-                                    src="img/png/icone-link-arrow-blue.png"
-                                    alt="fleche dropwdown"
-                                />
-                            </a>
-                        </div>
-                    </div> */}
                     <Pagination
-                currentPage={currentPage}
-                totalPages={totalPages}
-                onPageChange={handlePageChange}
-                changeClass='false'
-            />
+                        currentPage={currentPage}
+                        totalPages={totalPages}
+                        onPageChange={handlePageChange}
+                        changeClass="false"
+                    />
                     <p className="gallery__text gallery__text--right">
-                        {bids.length} enchères trouvées | 0 - 20 de {bidsCount}
+                        {bids.length} enchères trouvées |{" "}
+                        {(currentPage - 1) * 10} -{" "}
+                        {currentPage * 10 > bidsCount
+                            ? bidsCount
+                            : currentPage * 10}{" "}
+                        de {bidsCount}
                     </p>
                 </div>
             </div>
