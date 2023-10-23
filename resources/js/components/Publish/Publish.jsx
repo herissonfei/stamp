@@ -88,7 +88,8 @@ export default function Publish() {
         // console.log("表单已提交");
         axios.post("/uploadFormData", data).then((res) => {
             console.log(res.data);
-            window.history.back();
+            // window.history.back();
+            window.location.pathname = "/listePrive";
         });
         console.log(data);
     };
@@ -103,21 +104,21 @@ export default function Publish() {
             <form onSubmit={handleSubmit} encType="multipart/form-data">
                 <div className="formContainer">
                     <div className="formContainer--div">
-                        
-
-                        <div className="form-group">
+                        {/* <div className="form-group">
                             <label className="labelForm" htmlFor="bidderId">
                                 当前登录的用户的ID:
-                            </label>
-                            <input
-                                type="text"
-                                id="bidderId"
-                                value={bidderId}
-                                onChange={(event) =>
-                                    setBidderId(event.target.value)
-                                }
-                            />
-                        </div>
+                            </label> */}
+
+                        <input
+                            type="hidden"
+                            id="bidderId"
+                            value={bidderId}
+                            onChange={(event) =>
+                                setBidderId(event.target.value)
+                            }
+                        />
+
+                        {/* </div> */}
 
                         <div className="form-group">
                             <label className="labelForm" htmlFor="startDate">
@@ -235,8 +236,6 @@ export default function Publish() {
                         {/* ---- */}
                     </div>
                     <div className="formContainer--div">
-                        
-
                         <div className="form-group">
                             <label className="labelForm" htmlFor="dimensions">
                                 dimensions:
@@ -319,7 +318,6 @@ export default function Publish() {
                                 }
                             />
                         </div>
-                       
 
                         <div className="form-group">
                             <label className="labelForm" htmlFor="auctionCount">
@@ -334,9 +332,6 @@ export default function Publish() {
                                 }
                             />
                         </div>
-
-                     
-                        
 
                         <div className="form-group">
                             <label className="labelForm" htmlFor="country">
@@ -367,7 +362,9 @@ export default function Publish() {
                     </div>
                 </div>
 
-                <button type="submit" className="blue">上传</button>
+                <button type="submit" className="blue">
+                    上传
+                </button>
             </form>
             {/* <form onSubmit={handleSubmit}>
                 

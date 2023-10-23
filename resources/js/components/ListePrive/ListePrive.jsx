@@ -1,14 +1,38 @@
 import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom/client";
 import "./ListePrive.css";
+import axios from "axios";
+import Pagination from "../Pagination";
 
 export default function ListePrive() {
+    // 需要有一个不变动对的数据用来对pagination的点击做出响应
+    const [bidsPriveData, setBidsPriveData] = useState([]);
     const [bidsPrive, setBidsPrive] = useState([]);
+    // console.log(bidsPrive);
+    const [currentPage, setCurrentPage] = useState(1);
 
+    const handlePageChange = (newPage) => {
+        setCurrentPage(newPage);
+
+        const itemsPerPage = 10;
+        const startIndex = (newPage - 1) * itemsPerPage;
+        const endIndex = startIndex + itemsPerPage;
+
+        const newData = bidsPriveData.slice(startIndex, endIndex);
+
+        setBidsPrive(newData);
+    };
+
+    const [bidsCount, setBidsCount] = useState();
+    const totalPages =
+        bidsCount % 10 !== 0 ? bidsCount / 10 + 1 : bidsCount / 10;
+
+    totalPages;
     useEffect(() => {
         axios.get("/getBidsPrive").then((res) => {
-            console.log(res.data);
-            setBidsPrive(res.data);
+            // console.log(res.data);
+            setBidsPrive(res.data.slice(0, 10));
+            setBidsPriveData(res.data);
         });
     }, []);
 
@@ -24,6 +48,13 @@ export default function ListePrive() {
             });
         });
     };
+
+    // 获取bids的总数量
+    useEffect(() => {
+        axios.get("/getBidsPriveCount").then((res) => {
+            setBidsCount(res.data);
+        });
+    }, []);
     return (
         <div>
             <div className="hero hero--page-interieure">
@@ -91,61 +122,12 @@ export default function ListePrive() {
 					src="img/png/icone-link-arrow.png" alt="fleche dropwdown" />
 			</button> */}
             </div>
-            <div className="menu__nav-page menu__nav-page-wrapper">
-                <div>
-                    <a>
-                        <img
-                            width="10"
-                            src="img/png/icone-link-arrow-blue-left.png"
-                            alt="fleche dropwdown"
-                        />
-                    </a>
-                </div>
-                <div>
-                    <a>
-                        <span>1</span>
-                    </a>
-                </div>
-                <div>
-                    <a>
-                        <span>2</span>
-                    </a>
-                </div>
-                <div>
-                    <a>
-                        <span>3</span>
-                    </a>
-                </div>
-                <div>
-                    <a>
-                        <span>4</span>
-                    </a>
-                </div>
-                <div>
-                    <a>
-                        <span>5</span>
-                    </a>
-                </div>
-                <div>
-                    <a>
-                        <span>...</span>
-                    </a>
-                </div>
-                <div>
-                    <a>
-                        <span>8</span>
-                    </a>
-                </div>
-                <div>
-                    <a>
-                        <img
-                            width="10"
-                            src="img/png/icone-link-arrow-blue.png"
-                            alt="fleche dropwdown"
-                        />
-                    </a>
-                </div>
-            </div>
+            <Pagination
+                currentPage={currentPage}
+                totalPages={totalPages}
+                onPageChange={handlePageChange}
+                changeClass="true"
+            />
             {/* <!-- GALLERIE ENCHÈRES --> */}
             <div className="wrapper gallery">
                 <div className="wrapper--header">

@@ -318,6 +318,24 @@ small {
         grid-column-start: 2;
         grid-column-end: 3;
     }
+
+    .grid--5,
+    .grid--5-second-var {
+        grid-template-columns: repeat(5, 1fr);
+    }
+
+    .grid--5 .tile:first-of-type {
+        grid-column-start: 1;
+        grid-column-end: 2;
+    }
+
+    .grid--5-var {
+        grid-template-columns: repeat(5, 1fr);
+    }
+
+    .grid--5-second-var .tile:last-of-type {
+        display: block;
+    }
 }
 
 @media only screen and (min-width: 1400px) {
@@ -959,6 +977,20 @@ input[type="checkbox"]:checked {
     text-transform: uppercase;
 }
 
+.btn_details {
+    border: 1px solid #f9a211;
+    border-radius: 5px;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
+    color: var(--color-primary);
+    font-family: var(--font-secondary);
+    font-weight: var(--font-weight-heavy);
+    font-size: var(--font-size-x-small);
+    line-height: var(--line-height-medium);
+    padding: 1rem 1.5rem 1rem 1.5rem;
+    text-align: center;
+    text-transform: uppercase;
+}
+
 .btn--orange {
     background-color: var(--color-palette-first);
     border: none;
@@ -1412,7 +1444,8 @@ input[type="checkbox"]:checked {
         padding-top: 0;
     }
 
-    .pannel__form div {
+    /* 为了详情那边的按钮，先把这个注释掉，之后看 */
+    /* .pannel__form div {
         margin-top: 0px;
-    }
+    } */
 }

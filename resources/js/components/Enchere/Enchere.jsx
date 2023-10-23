@@ -8,6 +8,19 @@ export default function Enchere() {
 
     const [bid, setBid] = useState([]);
 
+    const [user, setUser] = useState(null);
+    const [reservePrice, setreservePrice] = useState("");
+    const bidsHistorique = [];
+    console.log(bid);
+    // console.log(parseFloat(reservePrice));
+
+    useEffect(() => {
+        axios.get(`/getOneBid/${id}`).then((res) => {
+            setBid(res.data[0]);
+            setreservePrice(parseFloat(res.data[0].reservePrice));
+        });
+    }, []);
+
     // 创建一个新的Date对象，该对象会表示当前的日期和时间
     const now = new Date();
 
@@ -64,12 +77,32 @@ export default function Enchere() {
         };
     }
 
-    useEffect(() => {
-        axios.get(`/getOneBid/${id}`).then((res) => {
-            setBid(res.data[0]);
+    function handleMiser(e) {
+        e.preventDefault();
+        axios.get(`/checkUser`).then((res) => {
+            if (res.data) {
+                console.log(res.data);
+                setUser(res.data);
+                axios.patch(`/enchere/augmenter/${bid.id}`, reservePrice).then(response => {
+                    console.log(response.data);
+                });
+            } else {
+                window.location.pathname = "/login";
+            }
         });
-    }, []);
-    console.log(bid);
+    }
+
+    function handleMin(e) {
+        e.preventDefault();
+        axios.get(`/checkUser`).then((res) => {
+            if (res.data) {
+                console.log(res.data);
+                setUser(res.data);
+            } else {
+                window.location.pathname = "/login";
+            }
+        });
+    }
     return (
         <div>
             {/* <!-- HERO --> */}
@@ -250,10 +283,11 @@ export default function Enchere() {
                                     <p className="tile__lot tile__lot--red">
                                         <strong>
                                             {/* {new Date(bid.endDate)} */}
-                                            {fermeDans == "Fermé" ? "Fermé" : `${fermeDans.days}d-${fermeDans.hours}
+                                            {fermeDans == "Fermé"
+                                                ? "Fermé"
+                                                : `${fermeDans.days}d-${fermeDans.hours}
                                             h-${fermeDans.minutes}m-
                                             ${fermeDans.seconds}s`}
-                                            
                                         </strong>
                                     </p>
                                     <small>
@@ -266,13 +300,16 @@ export default function Enchere() {
                                 <div className="grid grid--3-btn">
                                     <input
                                         type="number"
-                                        name="prix"
-                                        placeholder="min 10.70"
+                                        value={reservePrice}
+                                        onChange={(event) => {
+                                            setreservePrice(event.target.value);
+                                        }}
+                                        // placeholder="min 10.70"
                                     />
-                                    <a className="btn" href="enchere.html">
+                                    <a className="btn" onClick={handleMiser}>
                                         Miser
                                     </a>
-                                    <a className="btn" href="enchere.html">
+                                    <a className="btn" onClick={handleMin}>
                                         Min
                                     </a>
                                 </div>

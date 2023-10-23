@@ -8,7 +8,7 @@ export default function Pagination({
     changeClass,
 }) {
     const pageNumbers = [];
-    console.log(changeClass);
+    // console.log(changeClass);
     for (let i = 1; i <= totalPages; i++) {
         pageNumbers.push(i);
     }
@@ -22,7 +22,13 @@ export default function Pagination({
     };
 
     return [
-        <div className={changeClass === 'true' ? "menu__nav-page menu__nav-page-wrapper" : "menu__nav-page menu__nav-page--var"}>
+        <div
+            className={
+                changeClass === "true"
+                    ? "menu__nav-page menu__nav-page-wrapper"
+                    : "menu__nav-page menu__nav-page--var"
+            }
+        >
             <div
                 className={`${currentPage === 1 ? "disabled" : ""}`}
                 onClick={() => handlePageChange(currentPage - 1)}

@@ -8,8 +8,9 @@ import Pagination from "../Pagination";
 export default function Catalogue() {
     // TEST-------------------------------------
     const [currentPage, setCurrentPage] = useState(1);
-    // console.log(currentPage);
+
     const handlePageChange = (newPage) => {
+        // console.log(newPage);
         setCurrentPage(newPage);
 
         const itemsPerPage = 10;
@@ -28,6 +29,7 @@ export default function Catalogue() {
     const [bidsCount, setBidsCount] = useState();
     const totalPages =
         bidsCount % 10 !== 0 ? bidsCount / 10 + 1 : bidsCount / 10;
+
     // ------------------------------------筛选
     // checkbox CONDITION
     const [selectedCategoriesConditions, setselectedCategoriesConditions] =
@@ -118,7 +120,7 @@ export default function Catalogue() {
         setselectedCategoriesConditions([]);
         setSelectedCategoriesTypes([]);
         axios.get("/getAllBids").then((res) => {
-            console.log(res.data);
+            // console.log(res.data);
             setBids(res.data);
         });
         setSelectedOption("Tous les pays");
@@ -190,7 +192,7 @@ export default function Catalogue() {
                 <div className="wrapper wrapper--menu-secondaire">
                     <ul className="menu-secondaire__container">
                         <li className="menu__item menu__item--principal">
-                            <a className="menu__link" href="#">
+                            <a className="menu__link" href="/catalogue">
                                 En cours
                             </a>
                         </li>

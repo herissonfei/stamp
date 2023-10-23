@@ -23,6 +23,16 @@ class UserController extends Controller
         return view('auth.login');
     }
 
+    public function checkUser()
+    {
+        //
+        if(Auth::check()) {
+            return response()->json(Auth::user());
+        }
+        // return response()->json('1');
+    }
+
+
     /**
      * Show the form for creating a new resource.
      *

@@ -62,12 +62,16 @@ Route::get('/getBidsPrive', [BidController::class, 'getBidsPrive']);
 Route::post("/enchere/filter", [BidController::class,'filter']);
 // 获取bids的数量
 Route::get('/getBidsCount', [BidController::class, 'getBidsCount']);
-
+// 获取bidsPrive的数量
+Route::get('/getBidsPriveCount', [BidController::class, 'getBidsPriveCount']);
+// 进行拍卖 加注 miser
+Route::post("/enchere/miser", [BidController::class,'filter']);
 
 
 
 // ----------------------------------------------------------------------------发布竞拍
 Route::get('/getUser', [UserController::class, 'index']);
+Route::get('/checkUser', [UserController::class, 'checkUser']);
 Route::post('/uploadImage', [BidController::class, 'uploadImage']);
 Route::post('/uploadFormData', [BidController::class, 'store']);
 Route::delete('/deleteBid/{id}' , [BidController::class, 'destroy']);

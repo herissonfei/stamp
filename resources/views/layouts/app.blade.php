@@ -26,7 +26,8 @@
     <div id="app" class="page-container">
 
         <header class="header header--bg">
-
+        @if(request()->route()->getName() !== 'login' && request()->route()->getName() !== 'register')
+        
             <div class="wrapper--header">
                 <a href="/home" ><img src="/img/png/logo.png" alt="logo" class="header__logo"></a>
                 @if(request()->route()->getName() !== 'login' && request()->route()->getName() !== 'register')
@@ -91,7 +92,7 @@
                 
                 
             </div>
-
+        @endif
 
 
             
