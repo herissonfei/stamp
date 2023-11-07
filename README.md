@@ -11,3 +11,5 @@ npm install
 composer update
 
 the data of the database is in the folder of this path    resources\data
+
+![image](https://github.com/herissonfei/stamp/assets/89328999/4dfd86e2-93cf-4a55-9144-9fd9138c4719)
