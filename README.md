@@ -1,5 +1,3 @@
-# Readme for English
-
 ## Technology stack
 react@18.2.0 + axios@1.4.0 + Laravel@9.52.9
 
@@ -10,7 +8,7 @@ npm install
 
 composer update
 
-the data of the database is in the folder of this path    resources\data
+les données de la base de données se trouvent dans le dossier de ce chemin resources\data
 
 ## Accueil
 1: Aller à la page d'inscription
