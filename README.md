@@ -11,8 +11,10 @@ composer update
 les données de la base de données se trouvent dans le dossier de ce chemin resources\data
 
 ## Accueil
-1: Aller à la page d'inscription"
-2: Aller à la page de connexion"
+1: Aller à la page d'inscription.  
+
+2: Aller à la page de connexion.  
+
 3: Aller à la page catalogue pour voir tous les timbres
 ![accueil](https://github.com/herissonfei/stamp/assets/89328999/a29212d3-879c-484c-bacc-bb96d0cf8e6f)
 ### page d'inscription
