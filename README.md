@@ -34,4 +34,8 @@ les données de la base de données se trouvent dans le dossier de ce chemin res
 ![catalogue](https://github.com/herissonfei/stamp/assets/89328999/e58d0f3f-1ba0-4179-88d2-2d166903f769)
 
 ## Enchères
-![image](https://github.com/herissonfei/stamp/assets/89328999/4dfd86e2-93cf-4a55-9144-9fd9138c4719)
+8: Voir une version agrandie du timbre.  
+
+9: Visualiser un grossissement du timbre et voir qui a enchéri sur cette enchère.
+![detail](https://github.com/herissonfei/stamp/assets/89328999/e10a64d1-481e-41b6-8594-3e9ba123a3e6)
+
