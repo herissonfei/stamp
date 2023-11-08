@@ -28,9 +28,9 @@ les données de la base de données se trouvent dans le dossier de ce chemin res
 
 5: Pagination : vous pouvez afficher la page précédente ou la page suivante ou accéder directement aux timbres d'une certaine page. Chaque page peut afficher jusqu'à 20 enchères de timbres.  
 
-6. Filtrer : filtrer selon différentes conditions (une ou plusieurs).
+6: Filtrer : filtrer selon différentes conditions (une ou plusieurs).
 
-7. Aller à la page de détails de l'enchères
+7: Aller à la page de détails de l'enchères
 ![catalogue](https://github.com/herissonfei/stamp/assets/89328999/e58d0f3f-1ba0-4179-88d2-2d166903f769)
 
 ## Enchères
