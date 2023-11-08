@@ -12,7 +12,8 @@ composer update
 
 the data of the database is in the folder of this path    resources\data
 
-![accueil](https://github.com/herissonfei/stamp/assets/89328999/94dfe743-e9c1-4082-b0e1-6bd5c5fab6bc)
+## Accueil
+![accueil](https://github.com/herissonfei/stamp/assets/89328999/a29212d3-879c-484c-bacc-bb96d0cf8e6f)
 
 ![catalogue](https://github.com/herissonfei/stamp/assets/89328999/59a6181f-b85a-4d26-aefb-232618d5f686)
 
