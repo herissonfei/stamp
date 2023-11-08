@@ -13,7 +13,15 @@ composer update
 the data of the database is in the folder of this path    resources\data
 
 ## Accueil
+1: Aller à la page d'inscription
+2: Aller à la page de connexion
+3: Aller à la page catalogue pour voir tous les timbres
 ![accueil](https://github.com/herissonfei/stamp/assets/89328999/a29212d3-879c-484c-bacc-bb96d0cf8e6f)
+### page d'inscription
+![inscription](https://github.com/herissonfei/stamp/assets/89328999/896ffd85-6a43-4373-b0d9-4c7710b37840)
+### page de connexion
+![connection](https://github.com/herissonfei/stamp/assets/89328999/2029446e-7484-43c7-923d-fb7580bc97b9)
+
 
 ![catalogue](https://github.com/herissonfei/stamp/assets/89328999/59a6181f-b85a-4d26-aefb-232618d5f686)
 
