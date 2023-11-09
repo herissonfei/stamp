@@ -1,3 +1,8 @@
+# Projet full stack: front-end React + back-end Laravel
+
+## Description du projet
+Il s'agit d'un site full-stack, une plateforme des enchères de timbres. L'interface frontale de ce projet est construite avec React, offrant une expérience hautement interactive et conviviale. La partie back-end est prise en charge par le framework Laravel et est responsable de la gestion de la logique métier de l'application, des opérations de base de données et des services API.
+
 ## Pile technologique
 react@18.2.0 + axios@1.4.0 + Laravel@9.52.9
 
@@ -9,6 +14,11 @@ npm install
 composer update
 
 les données de la base de données se trouvent dans le dossier de ce chemin resources\data
+
+## Description
+ce projet est un site web d'enchères de timbres.
+
+
 
 ## Accueil
 1: Aller à la page d'inscription.  
