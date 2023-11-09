@@ -1,7 +1,7 @@
-## Technology stack
+## Pile technologique
 react@18.2.0 + axios@1.4.0 + Laravel@9.52.9
 
-## Running the Project
+## Exécution du projet
 git clone https://github.com/herissonfei/stamp.git
 
 npm install
