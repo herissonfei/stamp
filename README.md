@@ -44,8 +44,8 @@ ce projet est un site web d'enchères de timbres.
 ![catalogue](https://github.com/herissonfei/stamp/assets/89328999/e58d0f3f-1ba0-4179-88d2-2d166903f769)
 
 ## Enchères
-8: Voir une version agrandie du timbre.  
+8: Visualiser un grossissement du timbre et voir qui a enchéri sur cette enchère.
 
-9: Visualiser un grossissement du timbre et voir qui a enchéri sur cette enchère.
+9: Faire une enchère sur des timbres avec surcharge.
 ![detail](https://github.com/herissonfei/stamp/assets/89328999/e10a64d1-481e-41b6-8594-3e9ba123a3e6)
 
