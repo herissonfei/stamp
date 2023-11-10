@@ -4,9 +4,17 @@
 Il s'agit d'un site full-stack, une plateforme des enchères de timbres. L'interface frontale de ce projet est construite avec React, offrant une expérience hautement interactive et conviviale. La partie back-end est prise en charge par le framework Laravel et est responsable de la gestion de la logique métier de l'application, des opérations de base de données et des services API.
 
 ## Pile technologique
-react@18.2.0 + axios@1.4.0 + Laravel@9.52.9
+Frontend : react + Back-end : Laravel + base de données : MYSQL
 
-## Exécution du projet
+## commencement
+
+### Conditions préalables
+- Node.js
+- Composer
+- PHP >= [versions PHP supportées par Laravel]
+- un serveur de base de données
+
+### Exécution du projet
 git clone https://github.com/herissonfei/stamp.git
 
 npm install
