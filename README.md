@@ -1,67 +1,71 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Projet full stack: front-end React + back-end Laravel
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## Description du projet
+Il s'agit d'un site full-stack, une plateforme des enchères de timbres. L'interface frontale de ce projet est construite avec React, offrant une expérience hautement interactive et conviviale. La partie back-end est prise en charge par le framework Laravel et est responsable de la gestion de la logique métier de l'application, des opérations de base de données et des services API.
 
-## About Laravel
+## Pile technologique
+Frontend : react + Back-end : Laravel + base de données : MYSQL
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## commencement
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### Conditions préalables
+- Node.js
+- Composer
+- PHP >= [versions PHP supportées par Laravel]
+- un serveur de base de données
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### Exécution du projet
+git clone https://github.com/herissonfei/stamp.git
 
-## Learning Laravel
+npm install
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+composer update
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+les données de la base de données se trouvent dans le dossier de ce chemin resources\data
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Copiez et collez le fichier .env.example situé dans le répertoire racine, puis renommez-le en .env. Ensuite, remplissez les informations correspondantes à la base de données dans les zones entourées en rouge.
+![图片_20231111014546](https://github.com/herissonfei/stamp/assets/89328999/6357577e-f2dd-4b53-9306-ffd763064cf4)
 
-## Laravel Sponsors
+Ensuite, ouvrez deux terminaux et, dans le répertoire racine, saisissez respectivement 'php artisan serve' et 'npm run dev'.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+Après avoir cliqué sur http://127.0.0.1:8000/, vous verrez une erreur. Cliquez sur 'GENERATE APP KEY', puis rafraîchissez la page et le projet devrait démarrer.
 
-### Premium Partners
+![1](https://github.com/herissonfei/stamp/assets/89328999/ce690372-1885-4f40-be72-b55b3709821a)
+![2](https://github.com/herissonfei/stamp/assets/89328999/9cc88664-441f-4c48-990c-7d9080a80d31)
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
 
-## Contributing
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## Description
+ce projet est un site web d'enchères de timbres.
 
-## Code of Conduct
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
 
-## Security Vulnerabilities
+## Accueil
+1: Aller à la page d'inscription.  
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+2: Aller à la page de connexion.  
 
-## License
+3: Aller à la page catalogue pour voir tous les timbres.  
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
-# projet2
+![accueil](https://github.com/herissonfei/stamp/assets/89328999/a29212d3-879c-484c-bacc-bb96d0cf8e6f)
+### page d'inscription
+![inscription](https://github.com/herissonfei/stamp/assets/89328999/896ffd85-6a43-4373-b0d9-4c7710b37840)
+### page de connexion
+![connection](https://github.com/herissonfei/stamp/assets/89328999/2029446e-7484-43c7-923d-fb7580bc97b9)
+
+## Catalogue
+4: Trier selon différentes options, telles que le prix.  
+
+5: Pagination : vous pouvez afficher la page précédente ou la page suivante ou accéder directement aux timbres d'une certaine page. Chaque page peut afficher jusqu'à 20 enchères de timbres.  
+
+6: Filtrer : filtrer selon différentes conditions (une ou plusieurs).
+
+7: Aller à la page de détails de l'enchères
+![catalogue](https://github.com/herissonfei/stamp/assets/89328999/e58d0f3f-1ba0-4179-88d2-2d166903f769)
+
+## Enchères
+8: Visualiser un grossissement du timbre et voir qui a enchéri sur cette enchère.（en développement）
+
+9: Faire une enchère sur des timbres avec surcharge.（en développement）
+![detail](https://github.com/herissonfei/stamp/assets/89328999/e10a64d1-481e-41b6-8594-3e9ba123a3e6)
+
