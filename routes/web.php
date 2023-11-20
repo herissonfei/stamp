@@ -65,7 +65,7 @@ Route::get('/getBidsCount', [BidController::class, 'getBidsCount']);
 // 获取bidsPrive的数量
 Route::get('/getBidsPriveCount', [BidController::class, 'getBidsPriveCount']);
 // 进行拍卖 加注 miser
-Route::post("/enchere/miser", [BidController::class,'filter']);
+Route::patch("/enchere/miser/{id}", [BidController::class,'update']);
 
 
 
@@ -77,7 +77,7 @@ Route::post('/uploadFormData', [BidController::class, 'store']);
 Route::delete('/deleteBid/{id}' , [BidController::class, 'destroy']);
 
 
-
+// http://127.0.0.1:8000/register
     
 
 

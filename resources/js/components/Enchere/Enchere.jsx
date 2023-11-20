@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom/client";
 import "/resources/css/app.css";
 import "./Enchere.css";
+import axios from "axios";
 
 export default function Enchere() {
     const id = window.location.pathname.split("/").pop();
@@ -11,7 +12,7 @@ export default function Enchere() {
     const [user, setUser] = useState(null);
     const [reservePrice, setreservePrice] = useState("");
     const bidsHistorique = [];
-    console.log(bid);
+    // console.log(bid);
     // console.log(parseFloat(reservePrice));
 
     useEffect(() => {
@@ -81,11 +82,24 @@ export default function Enchere() {
         e.preventDefault();
         axios.get(`/checkUser`).then((res) => {
             if (res.data) {
-                console.log(res.data);
+                // console.log(res.data);
+                // console.log(reservePrice);
                 setUser(res.data);
-                axios.patch(`/enchere/augmenter/${bid.id}`, reservePrice).then(response => {
-                    console.log(response.data);
-                });
+                axios
+                    .patch(`/enchere/miser/${bid.id}`, {
+                        reservePrice: reservePrice,
+                    })
+                    .then((response) => {
+                        // console.log(response);
+                        // console.log(response.config.data);
+
+                        console.log(response.data);
+                        // axios.get
+                        axios.get(`/getOneBid/${id}`).then((res) => {
+                            setBid(res.data[0]);
+                            setreservePrice(parseFloat(res.data[0].reservePrice));
+                        });
+                    });
             } else {
                 window.location.pathname = "/login";
             }
@@ -128,10 +142,7 @@ export default function Enchere() {
                             src="/img/png/icone-link-arrow-blue-left.png"
                             alt="icone fleche link"
                         />
-                        <a
-                            className="link--border-blue"
-                            href="catalogue-enchere.html"
-                        >
+                        <a className="link--border-blue" href="/catalogue">
                             Retour au catalogue
                         </a>
                     </div>

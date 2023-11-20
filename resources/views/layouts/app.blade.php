@@ -24,15 +24,14 @@
 </head>
 <body>
     <div id="app" class="page-container">
-
         <header class="header header--bg">
-        @if(request()->route()->getName() !== 'login' && request()->route()->getName() !== 'register')
-        
+        @if(request()->route()->getName() !== 'login' && request()->route()->getName() !== 'register' && request()->path() !== 'publish')
             <div class="wrapper--header">
                 <a href="/home" ><img src="/img/png/logo.png" alt="logo" class="header__logo"></a>
                 @if(request()->route()->getName() !== 'login' && request()->route()->getName() !== 'register')
                 <div class="input-bar">
 					<div class="input-bar__text">
+                        
 						<p>Avancée</p>
 						<img class="icone-dropdown-arrow icone-dropdown-arrow--input-bar" src="/img/png/icone-dropdown-arrow-blue.png" alt="fleche dropwdown"/>
 					</div>
@@ -92,10 +91,7 @@
                 
                 
             </div>
-        @endif
-
-
-            
+        @endif  
         </header>
 
         <main class="wrapper-contenu">

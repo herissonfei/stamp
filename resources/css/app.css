@@ -1196,6 +1196,7 @@ input[type="checkbox"]:checked {
 
 .gallery__container {
     display: flex;
+    margin: auto 0;
 }
 
 .gallery__container > div:last-child {
@@ -1308,7 +1309,10 @@ input[type="checkbox"]:checked {
 
 /* Panneau NAVIGATION DETAILS enchère */
 .pannel__nav {
-    margin-right: 25px;
+    margin-right: 1vw;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 1vw;
 }
 
 .pannel__nav > div {

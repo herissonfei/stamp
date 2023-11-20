@@ -1,44 +1,19 @@
-/* .container {
-    max-width: 500px;
-    margin: 0 auto;
-}
-
-.form-group {
-    margin-bottom: 1rem;
-}
-
-.labelForm {
-    display: block;
-    font-weight: bold;
-}
-
-button[type="submit"] {
-    padding: 0.5rem 1rem;
-    font-size: 1rem;
-    background-color: #f1efe5;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-}
-
-.black {
-    color: #000;
-}
-
-.formContainer {
-    display: flex;
-} */
-
 /* Style for the form container */
 .formContainer {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    padding: 20px;
-    background-color: #f5f5f5;
-    border: 1px solid #ddd;
-    border-radius: 5px;
+    display: flex; /* 设置flex布局 */
+    flex-direction: column; /* 主轴方向为垂直方向 */
+    justify-content: center; /* 子元素在主轴方向上居中对齐 */
+    align-items: center; /* 子元素在交叉轴方向上居中对齐 */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    justify-content: space-between;
+    padding: 20px;
+    border: 1px solid #ddd;
+    background-color: #f1efe5;
+    max-width: 670px;
+}
+
+.box-container {
+    display: flex; /* 设置flex布局 */
 }
 
 /* Style for the form groups */
@@ -63,7 +38,7 @@ input[type="date"],
 textarea {
     width: 100%;
     padding: 10px;
-    border: 1px solid #ccc;
+    border: 1px solid var(--color-palette-first);
     border-radius: 4px;
     font-size: 16px;
 }
@@ -82,7 +57,7 @@ input[type="file"] {
     padding: 10px;
     font-size: 16px;
     background-color: #f5f5f5;
-    border: 1px solid #ccc;
+    border: 1px solid var(--color-palette-first);
     border-radius: 4px;
 }
 
@@ -98,17 +73,20 @@ button[type="submit"] {
 }
 
 .blue {
-    background-color: #007bff;
+    background-color: #f9a211;
     color: #fff;
     padding: 10px 20px;
     border: none;
-    border-radius: 4px;
+    border-radius: 5px;
     font-size: 16px;
     cursor: pointer;
+    font-size: 18px;
+    font-weight: 700;
+    width: 90%;
 }
 /* Style for the submit button on hover */
 .blue:hover {
-    background-color: #0056b3;
+    background-color: #2b3858;
 }
 
 /* Optional: Style for the form container if you want to center it on the page */
@@ -117,10 +95,12 @@ button[type="submit"] {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    margin-top: 60px;
+    /* margin-top: 60px; */
+    margin-top: 10%;
 }
 
 .formContainer--div {
+    top: 10;
     width: 50%;
     margin-left: 16px;
     margin-right: 40px;

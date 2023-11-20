@@ -325,7 +325,7 @@ export default function ListePrive() {
                                 </div>
                             </section>
                             <div className="wrapper--header">
-                                <div>
+                                <div className="wrapperButton">
                                     <a className="btn btn--text-icone">
                                         Par défaut
                                         <img

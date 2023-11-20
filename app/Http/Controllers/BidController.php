@@ -219,6 +219,8 @@ class BidController extends Controller
     public function edit(Bid $bid)
     {
         //
+        
+
     }
 
     /**
@@ -228,9 +230,16 @@ class BidController extends Controller
      * @param  \App\Models\Bid  $bid
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Bid $bid)
+    public function update(Request $request, Stamp $stamp, Bid $bid, $id)
     {
         //
+        // return response()->json($request['reservePrice']);
+
+       
+        DB::table('stamps')->where('id',Bid::find($id)['bidStampId'])->update(['reservePrice' => $request['reservePrice']]);
+        $stamp = Stamp::find(Bid::find($id)['bidStampId']);
+
+        return response()->json($stamp);
     }
 
     /**

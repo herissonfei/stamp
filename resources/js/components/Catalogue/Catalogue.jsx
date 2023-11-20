@@ -140,8 +140,8 @@ export default function Catalogue() {
         };
 
         axios.post("/enchere/filter", data).then((res) => {
-            console.log("这是后端返回来的数据", res.data);
-            console.log(res.data.length);
+            // console.log("这是后端返回来的数据", res.data);
+            // console.log(res.data.length);
             setBids(res.data);
         });
     };
@@ -210,15 +210,15 @@ export default function Catalogue() {
                     >
                         <option disabled>Trier</option>
                         <option value="tous">Tous</option>
-                        <option value="decroissant">Prix décroissant</option>
+                        <option value="decroissant">Prix décroissant &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; </option>
                         <option value="croissant">Prix croissant</option>
-                        <option value="popularite">Par popularité</option>
-                        <option value="nouvellement-liste">
+                        {/* <option value="popularite">Par popularité</option> */}
+                        {/* <option value="nouvellement-liste">
                             Nouvellement listée
-                        </option>
-                        <option value="termine-bientot">
+                        </option> */}
+                        {/* <option value="termine-bientot">
                             Se terminant bientôt
-                        </option>
+                        </option> */}
                     </select>
                     <div className="wrapper--header menu-secondaire__icone">
                         <div className="btn">
@@ -500,18 +500,7 @@ export default function Catalogue() {
                                 </div>
                             </section> */}
                             <div className="wrapper--header">
-                                <div>
-                                    {/* <a className="btn btn--text-icone">
-                                        Par défaut
-                                        <img
-                                            width="15"
-                                            src="img/png/icone-round-arrow-orange.png"
-                                            alt="icone fleche par defaut"
-                                        />
-                                    </a> */}
-                                    {/* <a className="btn btn--text-icone">
-                                        Chercher
-                                    </a> */}
+                                <div className="wrapperButton">
                                     <button
                                         type="submit"
                                         onClick={handleParDefault}
