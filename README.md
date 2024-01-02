@@ -1,3 +1,4 @@
+
 # Projet full stack: front-end React + back-end Laravel
 
 ## Description du projet
@@ -5,33 +6,6 @@ Il s'agit d'un site full-stack, une plateforme des enchères de timbres. L'inter
 
 ## Pile technologique
 Frontend : react + Back-end : Laravel + base de données : MYSQL
-
-## commencement
-
-### Conditions préalables
-- Node.js
-- Composer
-- PHP >= [versions PHP supportées par Laravel]
-- un serveur de base de données
-
-### Exécution du projet
-git clone https://github.com/herissonfei/stamp.git
-
-npm install
-
-composer update
-
-les données de la base de données se trouvent dans le dossier de ce chemin resources\data
-
-Copiez et collez le fichier .env.example situé dans le répertoire racine, puis renommez-le en .env. Ensuite, remplissez les informations correspondantes à la base de données dans les zones entourées en rouge.
-![图片_20231111014546](https://github.com/herissonfei/stamp/assets/89328999/6357577e-f2dd-4b53-9306-ffd763064cf4)
-
-Ensuite, ouvrez deux terminaux et, dans le répertoire racine, saisissez respectivement 'php artisan serve' et 'npm run dev'.
-
-Après avoir cliqué sur http://127.0.0.1:8000/, vous verrez une erreur. Cliquez sur 'GENERATE APP KEY', puis rafraîchissez la page et le projet devrait démarrer.
-
-![1](https://github.com/herissonfei/stamp/assets/89328999/ce690372-1885-4f40-be72-b55b3709821a)
-![2](https://github.com/herissonfei/stamp/assets/89328999/9cc88664-441f-4c48-990c-7d9080a80d31)
 
 
 
